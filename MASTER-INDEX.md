@@ -37,18 +37,18 @@
 - `docs/04-skills-in-practice/07-baoyu-infographic.md` — baoyu-infographic（インフォグラフィック）
 - `docs/04-skills-in-practice/08-baoyu-comic.md` — baoyu-comic（知識マンガ生成）
 
-## Part 5: 発展・応用（65分）
-- `docs/06-advanced/01-pipeline-integration.md` — 複数スキルの連携パイプライン
-- `docs/06-advanced/02-ci-cd-integration.md` — 実プロジェクトへの組み込み
-- `docs/06-advanced/03-evaluation-cycle.md` — スキル評価と改善サイクル
-- `docs/06-advanced/04-skill-creator-deep-dive.md` — skill-creator 徹底解説（対話生成の仕組みと活用ノウハウ）
-
-## Part 6: コンテンツ生成スキル実践（90分）🆕
+## Part 5: コンテンツ生成スキル実践（90分）🆕
 - `docs/05-content-creation/01-baoyu-ecosystem.md` — baoyu-skills エコシステム入門
 - `docs/05-content-creation/02-content-skills-in-action.md` — コンテンツ生成スキルを使いこなす
 - `docs/05-content-creation/03-image-gen-backends.md` — AI画像生成バックエンドの選択
 - `docs/05-content-creation/04-skill-pipeline.md` — 実プロジェクトでのスキル連携
 - `docs/05-content-creation/05-custom-skill-development.md` — カスタムスキル開発（baoyu流）
+
+## Part 6: 発展・応用（65分）
+- `docs/06-advanced/01-pipeline-integration.md` — 複数スキルの連携パイプライン
+- `docs/06-advanced/02-ci-cd-integration.md` — 実プロジェクトへの組み込み
+- `docs/06-advanced/03-evaluation-cycle.md` — スキル評価と改善サイクル
+- `docs/06-advanced/04-skill-creator-deep-dive.md` — skill-creator 徹底解説（対話生成の仕組みと活用ノウハウ）
 
 ## Samples
 - `samples/grill-me/SKILL.md`

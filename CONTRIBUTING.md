@@ -3,7 +3,7 @@
 このリポジトリへの改善提案や修正は歓迎します。
 
 ## 基本方針
-- Claude Code の `/run-skill-generator` と GitHub Copilot の Agent Skills の両方をカバーする内容を優先してください。
+- Claude Code の `/skill-creator` と GitHub Copilot の Agent Skills の両方をカバーする内容を優先してください。
 - サンプルスキルは学習者がすぐ試せる形（コピペ可能な SKILL.md）を意識してください。
 - 大きな構成変更は `Issue` で背景共有してから進めてください。
 

@@ -1,6 +1,6 @@
 # Agent Skills in Practice — スキルを作り、見つけ、活用する
 
-Agent Skills オープンスタンダード（`agentskills.io`）に基づき、**Claude Code の `/run-skill-generator`** と **GitHub Copilot の Agent Skills** の両方で使えるスキル開発を学ぶチュートリアルです。
+Agent Skills オープンスタンダード（`agentskills.io`）に基づき、**Claude Code の `/skill-creator`** と **GitHub Copilot の Agent Skills** の両方で使えるスキル開発を学ぶチュートリアルです。
 
 > 💡 ブラウザで https://duwenji.github.io/spa-quiz-app/ を開くと、関連トピックをクイズ形式で復習できます。
 
@@ -11,7 +11,7 @@ Agent Skills オープンスタンダード（`agentskills.io`）に基づき、
 | 観点 | 内容 |
 |------|------|
 | **フォーカス** | Agent Skills オープンスタンダードの実践 |
-| **スキル生成** | Claude Code `/run-skill-generator`（対話生成）+ 手書き |
+| **スキル生成** | Claude Code `/skill-creator`（対話生成）+ 手書き |
 | **実行環境** | Claude Code（`.claude/skills/`）& GitHub Copilot（`.github/skills/`） |
 | **サンプルスキル** | **フロントエンド特化**（grill-me, frontend-design 等）+ **コンテンツ生成**（baoyu-skills） |
 | **問題認識** | **前端大神3問題** からスタート |
@@ -23,7 +23,7 @@ Agent Skills オープンスタンダード（`agentskills.io`）に基づき、
 
 ```
 発見層  ── Find Skills / gh skill / skill.sh / baoyu-skills 発見
-作成層  ── Claude Code /run-skill-generator + 手書き SKILL.md
+作成層  ── Claude Code /skill-creator + 手書き SKILL.md
 概念層  ── Superpowers（OSSプラグイン）/ GStack / baoyu-skills アーキテクチャ
 実践層  ── grill-me / triage / improve / frontend-design / ui-ux-pro-max / baoyu-*
 応用層  ── コンテンツ生成パイプライン / 画像生成バックエンド / カスタムスキル開発
@@ -76,22 +76,22 @@ Agent Skills オープンスタンダード（`agentskills.io`）に基づき、
 | 4-7 | **baoyu-infographic**（インフォグラフィック） | コンテンツ生成 | 21レイアウト×17スタイル、自動推薦ロジック |
 | 4-8 | **baoyu-comic**（知識マンガ生成） | コンテンツ生成 | 5アート×7トーン、ストーリーボード、順次生成 |
 
-### Part 5: 発展・応用（65分）
+### Part 5: コンテンツ生成スキル実践（90分）🆕
 | # | セクション | 内容 |
 |---|-----------|------|
-| 5-1 | 複数スキルの連携パイプライン | grill-me → improve → frontend-design の連携 |
-| 5-2 | 実プロジェクトへの組み込み | CI/CD パイプラインへの統合、品質ゲート |
-| 5-3 | スキル評価と改善サイクル | 品質評価フレームワーク導入 |
-| 5-4 | skill-creator 徹底解説 | 対話生成の仕組み、内部プロセス、クロスプラットフォーム活用ノウハウ |
+| 5-1 | baoyu-skills エコシステム入門 | 全体像、インストール、3カテゴリ（Content / AI Gen / Utility） |
+| 5-2 | コンテンツ生成スキルを使いこなす | カバー画像→図解→インフォグラフィック→スライドの連携 |
+| 5-3 | AI画像生成バックエンドの選択 | baoyu-image-gen / Gemini Web / Codex CLI の比較と選択 |
+| 5-4 | 実プロジェクトでのスキル連携 | パイプライン構築、CI/CD統合、バッチ処理、並列実行 |
+| 5-5 | カスタムスキル開発（baoyu流） | 自己完結型スキル、スタイル体系、バックエンド抽象化 |
 
-### Part 6: コンテンツ生成スキル実践（90分）🆕
+### Part 6: 発展・応用（65分）
 | # | セクション | 内容 |
 |---|-----------|------|
-| 6-1 | baoyu-skills エコシステム入門 | 全体像、インストール、3カテゴリ（Content / AI Gen / Utility） |
-| 6-2 | コンテンツ生成スキルを使いこなす | カバー画像→図解→インフォグラフィック→スライドの連携 |
-| 6-3 | AI画像生成バックエンドの選択 | baoyu-image-gen / Gemini Web / Codex CLI の比較と選択 |
-| 6-4 | 実プロジェクトでのスキル連携 | パイプライン構築、CI/CD統合、バッチ処理、並列実行 |
-| 6-5 | カスタムスキル開発（baoyu流） | 自己完結型スキル、スタイル体系、バックエンド抽象化 |
+| 6-1 | 複数スキルの連携パイプライン | grill-me → improve → frontend-design の連携 |
+| 6-2 | 実プロジェクトへの組み込み | CI/CD パイプラインへの統合、品質ゲート |
+| 6-3 | スキル評価と改善サイクル | 品質評価フレームワーク導入 |
+| 6-4 | skill-creator 徹底解説 | 対話生成の仕組み、内部プロセス、クロスプラットフォーム活用ノウハウ |
 
 ---
 
@@ -104,8 +104,8 @@ Agent Skills オープンスタンダード（`agentskills.io`）に基づき、
 | Part 2 | 4 | 60分 | ⭐⭐ |
 | Part 3 | 5 | 80分 | ⭐⭐ |
 | Part 4 | 8 | 180分 | ⭐⭐⭐ |
-| Part 5 | 4 | 65分 | ⭐⭐⭐ |
-| Part 6 | 5 | 90分 | ⭐⭐⭐ |
+| Part 5 | 5 | 90分 | ⭐⭐⭐ |
+| Part 6 | 4 | 65分 | ⭐⭐⭐ |
 | **合計** | **32** | **8時間35分** | |
 
 
@@ -152,8 +152,8 @@ agent-skills-in-practice/
 │   ├── 02-discovery/             # Part 2
 │   ├── 03-frameworks/            # Part 3
 │   ├── 04-skills-in-practice/    # Part 4 ⭐
-│   ├── 06-advanced/             # Part 5
-│   └── 05-content-creation/     # Part 6 🆕 baoyu-skills
+│   ├── 05-content-creation/     # Part 5 🆕 baoyu-skills
+│   └── 06-advanced/             # Part 6
 ├── samples/                      # 実装サンプル（SKILL.md）
 ├── assets/                       # 図表類
 │   └── diagrams/

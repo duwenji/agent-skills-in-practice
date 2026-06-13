@@ -162,11 +162,10 @@ python -m scripts.package_skill .claude/skills/code-review/
 # → code-review.skill が生成される
 ```
 
-## `/run-skill-generator` との使い分け
+## skill-creator の活用範囲
 
 | 目的 | 使うコマンド |
 |------|------------|
-| プロジェクトのビルド手順を記録する | `/run-skill-generator` |
 | コードレビュースキルを作成する | `/skill-creator` |
 | Issue分析スキルを作成する | `/skill-creator` |
 | 既存のスキルを改善する | `/skill-creator` |
