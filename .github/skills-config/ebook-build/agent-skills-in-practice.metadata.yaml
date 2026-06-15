@@ -1,0 +1,33 @@
+title: Agent Skills in Practice
+subtitle: スキルを作り、見つけ、活用する — Claude Code と GitHub Copilot で始める実践ガイド
+creator: 杜 文吉
+language: ja-JP
+rights: Copyright (c) 杜 文吉
+date: 2026-06-15
+toc: true
+toc-depth: 2
+publisher: Duwenji Lab
+identifier: agent-skills-in-practice
+description: >
+  Agent Skills オープンスタンダードに基づき、Claude Code の /skill-creator と GitHub Copilot Agent Skills の
+  両方でスキルを開発・活用する実践ガイド。スキル作成、発見・共有、概念フレームワーク、実践実装、
+  コンテンツ生成、発展応用を網羅した全7パート・8時間35分の体系的チュートリアル。
+keywords:
+  - agent skills
+  - claude code
+  - github copilot
+  - skill creator
+  - ai coding
+  - developer tools
+subject:
+  - software engineering
+  - artificial intelligence
+chapters:
+  dir-titles:
+    00-fundamentals: 概要と環境準備
+    01-skill-creation: スキル作成入門
+    02-discovery: スキル発見と共有
+    03-frameworks: 概念フレームワークと課題認識
+    04-skills-in-practice: 実践スキル実装編
+    05-content-creation: コンテンツ生成スキル実践
+    06-advanced: 発展・応用
