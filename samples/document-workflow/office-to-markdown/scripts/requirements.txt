@@ -1,0 +1,8 @@
+# 必須
+markitdown>=0.1.0
+
+# .docx の構造比較チェックに使用（check_output.py）
+python-docx>=1.1.0
+
+# 方針 B: LLM ビジョンを使う場合のみ必要
+# openai>=1.0.0
