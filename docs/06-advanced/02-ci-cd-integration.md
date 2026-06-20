@@ -8,6 +8,17 @@
 
 ## CI/CD パイプラインへの統合
 
+```mermaid
+flowchart LR
+    PR[Pull Request] --> GM["grill-me<br>コード品質チェック"]
+    PR --> UI["ui-ux-pro-max<br>UI変更時のみ"]
+    IS[Issue 作成] --> TR["triage<br>自動優先度判定"]
+    SC["スケジュール<br>毎週月曜"] --> WR["週次レポート<br>grill-me + improve"]
+    GM --> QG{"品質ゲート<br>スコア ≥ 70？"}
+    QG -->|Pass| MG[✅ マージ許可]
+    QG -->|Fail| BL[❌ マージブロック]
+```
+
 ### GitHub Actions との連携
 
 ```yaml
