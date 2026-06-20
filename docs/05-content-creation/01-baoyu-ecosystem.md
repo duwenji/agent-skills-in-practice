@@ -96,12 +96,6 @@ baoyu-markdown-to-html でHTML出力
 - Agent Skills の基本（SKILL.md の構造、スラッシュコマンド）を理解している
 - Claude Code または Codex CLI が利用可能
 
-## 次のステップ
-
-→ [6-2: コンテンツ生成スキルを使いこなす](02-content-skills-in-action.md)
-
----
-
 ## 3大フレームワークの比較
 
 このチュートリアルで扱う3つのアプローチの比較です：
@@ -354,3 +348,9 @@ SKILL.md（定義）と scripts/main.ts（実行）を分離することで：
 ---
 
 > **参考リンク**: [JimLiu/baoyu-skills](https://github.com/JimLiu/baoyu-skills) | [CLAUDE.md](https://github.com/JimLiu/baoyu-skills/blob/main/CLAUDE.md)
+
+---
+
+## 次のステップ
+
+→ [6-2: コンテンツ生成スキルを使いこなす](02-content-skills-in-action.md)

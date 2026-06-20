@@ -81,19 +81,18 @@ gh skill --help
 ### Claude Code で使う場合
 
 ```bash
-# プロジェクト用
-cp samples/grill-me/SKILL.md .claude/skills/grill-me/SKILL.md
-
-# または個人用
-mkdir -p ~/.claude/skills/grill-me/
-cp samples/grill-me/SKILL.md ~/.claude/skills/grill-me/SKILL.md
+# プロジェクト用（Matt Pocock の grill-me を例に）
+mkdir -p .claude/skills/grill-me/
+curl -o .claude/skills/grill-me/SKILL.md \
+  https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grill-me/SKILL.md
 ```
 
 ### GitHub Copilot で使う場合
 
 ```bash
 mkdir -p .github/skills/grill-me/
-cp samples/grill-me/SKILL.md .github/skills/grill-me/SKILL.md
+curl -o .github/skills/grill-me/SKILL.md \
+  https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grill-me/SKILL.md
 ```
 
 ## トラブルシューティング
