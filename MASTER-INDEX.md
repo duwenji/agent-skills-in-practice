@@ -50,6 +50,10 @@
 - `docs/06-advanced/03-evaluation-cycle.md` — スキル評価と改善サイクル
 - `docs/06-advanced/04-skill-creator-deep-dive.md` — skill-creator 徹底解説（対話生成の仕組みと活用ノウハウ）
 
+## Part 8: 用語集
+
+- `docs/08-glossary/01-glossary.md` — 教材全体の用語集（用語種付き）
+
 ## Samples
 - `samples/grill-me/SKILL.md`
 - `samples/triage/SKILL.md`

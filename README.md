@@ -14,7 +14,7 @@ Agent Skills オープンスタンダード（`agentskills.io`）に基づき、
 | **スキル生成** | Claude Code `/skill-creator`（対話生成）+ 手書き |
 | **実行環境** | Claude Code（`.claude/skills/`）& GitHub Copilot（`.github/skills/`） |
 | **サンプルスキル** | **フロントエンド特化**（grill-me, frontend-design 等）+ **コンテンツ生成**（baoyu-skills） |
-| **問題認識** | **前端大神3問題** からスタート |
+| **問題認識** | **AIコード生成3課題** からスタート |
 | **概念フレームワーク** | **Superpowers（OSSプラグイン）/ GStack / baoyu-skills** を解説 |
 
 ---
@@ -60,7 +60,7 @@ Agent Skills オープンスタンダード（`agentskills.io`）に基づき、
 |---|-----------|------|
 | 3-1 | Superpowers: コーディングエージェントの開発方法論 | Superpowers（obra/superpowers）の解説、スキルによる開発プロセス自動化 |
 | 3-2 | GStack: Generative AI Stack 全体像 | 生成AIスタックにおけるスキルの位置づけ |
-| 3-3 | 前端大神の3つの問題点 | AIコード生成の問題分析（理解のずれ / 実行失敗 / 構造の問題） |
+| 3-3 | AIコード生成の3つの課題 | AIコード生成の問題分析（理解のずれ / 実行失敗 / 構造の問題） |
 | 3-4 | 問題 × スキル解決マッピング | 各問題をどのスキルで解決するか（一覧表） |
 | 3-5 | baoyu-skills のアーキテクチャ分析 | 3大フレームワーク比較、自己完結型設計、5Dスタイル体系 |
 

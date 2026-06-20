@@ -19,8 +19,8 @@
 | **grill-me** | 品質検証 | コードを「可読性・パフォーマンス・セキュリティ・保守性」の4軸でレビューする | [4-1](01-grill-me.md) |
 | **triage** | 優先順位付け | GitHub Issue を解析し、優先度（P0〜P3）の判定・カテゴリ分類・対応推奨事項を自動生成する | [4-2](02-triage-issue-analysis.md) |
 | **improve** | リファクタリング | コードのパフォーマンス最適化・リファクタリング・モダナイゼーションの改善提案を行う | [4-3](03-improve.md) |
-| **frontend-design** | 設計支援 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする | [3-3](../03-frameworks/03-frontend-design.md) |
-| **ui-ux-pro-max** | UI/UX監査 | アクセシビリティ・視認性・操作性を多角的に監査する | [3-4](../03-frameworks/04-ui-ux-pro-max.md) |
+| **frontend-design** | 設計支援 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする | [3-5](../03-frameworks/05-frontend-design.md) |
+| **ui-ux-pro-max** | UI/UX監査 | アクセシビリティ・視認性・操作性を多角的に監査する | [3-6](../03-frameworks/06-ui-ux-pro-max.md) |
 | **baoyu-diagram** | 図解生成 | アーキテクチャ図・フロー図をSVGで生成する | [4-6](06-baoyu-diagram.md) |
 | **baoyu-infographic** | 視覚化 | データや概念を21レイアウト×17スタイルのインフォグラフィックで整理する | [4-7](07-baoyu-infographic.md) |
 | **baoyu-comic** | コンテンツ制作 | 技術概念をコミック形式でわかりやすく伝える | [4-8](08-baoyu-comic.md) |
