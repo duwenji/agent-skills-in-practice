@@ -1,11 +1,24 @@
 ---
 name: office-to-markdown
-description: "Word/Excel/PowerPoint/PDF ファイルを Markdown に変換する。受領仕様書や社内文書を AI エージェントが処理しやすい形式に変換する場合に使用する。グラフ・画像の処理方針をユーザーに確認してから変換し、自動検証を必ず実行する。"
+description: "Word/Excel/PowerPoint/PDF ファイルを Markdown に変換する必要がある場合に使用する。グラフ・画像の処理方針をユーザーに確認してから変換し、自動検証を必ず実行する。"
 ---
 
 # Office → Markdown 変換
 
-`scripts/office2md.py` を使って Word・Excel・PowerPoint・PDF などの Office ファイルを Markdown テキストに変換します。変換後は `scripts/check_output.py` で自動検証を実行し、結果をユーザーに報告します。
+## 概要
+
+`scripts/office2md.py` を使って Word・Excel・PowerPoint・PDF などの Office ファイルを Markdown テキストに変換するスキル。変換後は `scripts/check_output.py` で自動検証を実行し、結果をユーザーに報告する。
+
+## いつ使うか
+
+**使う場合:**
+- `.docx` `.xlsx` `.pptx` `.pdf` `.html` `.csv` `.json` `.xml` `.epub` を Markdown に変換したい
+- AI エージェントで要約・比較・レビューするために文書を前処理したい
+- 受領した仕様書や社内文書をテキスト処理したい
+
+**使わない場合:**
+- すでに Markdown または純粋なテキスト（`.txt` `.md`）の場合
+- 変換ではなく文書の閲覧・編集が目的の場合
 
 ## ワークフロー
 
@@ -20,10 +33,10 @@ flowchart TD
     end
 
     ToolCheck --> MarkitdownOK{markitdown\nインストール済み?}
-    MarkitdownOK -->|No| InstallPrompt[ユーザーに確認\npip install markitdown]
+    MarkitdownOK -->|No| InstallPrompt[ユーザーに確認\nuv venv + uv sync --group dev]
     InstallPrompt --> Approved{承認?}
     Approved -->|No| Abort([中断])
-    Approved -->|Yes| Install[pip install -r requirements.txt]
+    Approved -->|Yes| Install[uv sync]
     Install --> InputCheck
     MarkitdownOK -->|Yes| InputCheck
 
@@ -39,12 +52,14 @@ flowchart TD
 
     ModeB --> OpenAIOK{openai + APIキー\nあり?}
     OpenAIOK -->|No| FallbackB[方針Aへフォールバック\nを提案]
-    FallbackB --> ModeGate
+    FallbackB -->|承諾| ModeA
+    FallbackB -->|拒否| Abort
     OpenAIOK -->|Yes| RunB["office2md.py --mode b"]
 
     ModeC --> LibreOK{LibreOffice\nインストール済み?\n※xlsx のみ必要}
     LibreOK -->|No かつ xlsx| FallbackC[方針Aへフォールバック\nを提案]
-    FallbackC --> ModeGate
+    FallbackC -->|承諾| ModeA
+    FallbackC -->|拒否| Abort
     LibreOK -->|Yes または docx| RunC["office2md.py --mode c"]
 
     ModeA --> RunA["office2md.py --mode a"]
@@ -88,9 +103,11 @@ office-to-markdown/
 
 変換を開始する前に、以下のコマンドで必要なツールがインストールされているか確認する。
 
+> **Note:** 以下は Bash (Git Bash / WSL / macOS / Linux) コマンドです。PowerShell で手動実行する場合は `/dev/null` を `$null`、行継続の `\` をバッククォート `` ` `` に置き換えてください。
+
 ```bash
 # markitdown（必須）
-python -c "import markitdown; print('✅ markitdown: OK')" 2>/dev/null \
+uv run python -c "import markitdown; print('✅ markitdown: OK')" 2>/dev/null \
   || echo "❌ markitdown: 未インストール"
 
 # LibreOffice（方針C で xlsx を処理する場合のみ必要）
@@ -99,18 +116,18 @@ libreoffice --version > /dev/null 2>&1 \
   || echo "❌ LibreOffice: 未インストール（方針C/xlsx で必要）"
 
 # openai パッケージ（方針B で必要）
-python -c "import openai; print('✅ openai package: OK')" 2>/dev/null \
+uv run python -c "import openai; print('✅ openai package: OK')" 2>/dev/null \
   || echo "❌ openai: 未インストール（方針B で必要）"
 
 # OPENAI_API_KEY 環境変数（方針B で必要）
-python -c "
+uv run python -c "
 import os
 key = os.environ.get('OPENAI_API_KEY', '')
 if key:
     print(f'✅ OPENAI_API_KEY: 設定済み (sk-...{key[-4:]})')
 else:
     print('❌ OPENAI_API_KEY: 未設定（方針B で必要）')
-    print('   Windows:     \$env:OPENAI_API_KEY = \"sk-...\"')
+    print(r'   Windows:     $env:OPENAI_API_KEY = "sk-..."')
     print('   macOS/Linux: export OPENAI_API_KEY=sk-...')
 "
 ```
@@ -128,7 +145,7 @@ markitdown が未インストールの場合はユーザーに確認し、承認
 
 ```bash
 # 仮想環境の作成と依存パッケージのインストール（初回のみ）
-uv venv --python 3.12
+uv venv
 uv sync --group dev
 
 # 以後はすべて uv run 経由で実行する（venv のアクティベート不要）
@@ -172,14 +189,14 @@ uv sync --extra mode-b
 
 ```bash
 # 方針 A（テキストのみ）
-python scripts/office2md.py <入力ファイル>
-python scripts/office2md.py <入力ファイル> -o <出力.md>
+uv run python scripts/office2md.py <入力ファイル>
+uv run python scripts/office2md.py <入力ファイル> -o <出力.md>
 
 # 方針 B（LLM ビジョン）
-python scripts/office2md.py <入力ファイル> --mode b
+uv run python scripts/office2md.py <入力ファイル> --mode b
 
 # 方針 C（PNG 抽出）
-python scripts/office2md.py <入力ファイル> --mode c --images-dir assets/images
+uv run python scripts/office2md.py <入力ファイル> --mode c --images-dir assets/images
 ```
 
 ### ステップ 4: 自動検証
@@ -190,7 +207,7 @@ python scripts/office2md.py <入力ファイル> --mode c --images-dir assets/im
 </HARD-GATE>
 
 ```bash
-python scripts/check_output.py <元ファイル> <変換後.md>
+uv run python scripts/check_output.py <元ファイル> <変換後.md>
 ```
 
 | チェック項目 | 検出できる問題 |
@@ -211,13 +228,23 @@ python scripts/check_output.py <元ファイル> <変換後.md>
 | **WARN のみ** | 警告の内容を説明し、問題なければそのまま進めてよいかユーザーに確認する |
 | **すべて PASS** | 変換完了を報告し、次のステップ（要約・比較・レビュー等）を提案する |
 
+## よくある間違い
+
+| 間違い | 正しい対応 |
+|--------|-----------|
+| 方針を確認せずに変換を開始する | DECISION-GATE を必ず通過し、ユーザーに方針 A/B/C を確認してから実行する |
+| `check_output.py` を実行せずに完了報告する | HARD-GATE を必ず通過し、検証結果を確認してから報告する |
+| ツール確認を省略して変換を試みる | ステップ0を必ず実行し、利用可能な方針を特定してから進む |
+| 方針 B/C のツールがなくてもそのまま実行しようとする | 方針 A へのフォールバックをユーザーに提案し、再確認する |
+| `python` を直接呼び出す（venv 未アクティブの環境） | 常に `uv run python` 経由で実行する |
+
 ## エラー時の対応
 
 | エラー | 対応 |
 |--------|------|
 | ファイルが見つからない | パスを確認してユーザーに再入力を求める |
 | 対応していない形式 | 対応フォーマット一覧を提示する |
-| `markitdown` 未インストール | ユーザーの承認を得て `pip install -r scripts/requirements.txt` を実行する |
+| `markitdown` 未インストール | ユーザーの承認を得て `uv sync --group dev` を実行する |
 | `libreoffice` 未インストール | 方針 C（xlsx）の場合のみ。方針 A へのフォールバックを提案する |
 | `OPENAI_API_KEY` 未設定 | 方針 B の場合のみ。設定方法（`export OPENAI_API_KEY=sk-...` / `$env:OPENAI_API_KEY="sk-..."`）を案内し、方針 A へのフォールバックも提案する |
 | check_output.py が FAIL を返す | 受領原本を確認するようユーザーに伝え、Markdown を修正する |

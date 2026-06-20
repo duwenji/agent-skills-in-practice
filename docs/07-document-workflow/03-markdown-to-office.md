@@ -1,4 +1,4 @@
-# 7-2: Markdown → Office 変換スキル（Pandoc）
+# 7-3: Markdown → Office 変換スキル（Pandoc）
 
 > **学習時間**: 30分 | **難易度**: ⭐⭐
 
@@ -81,15 +81,17 @@ Claude Code の場合：
 
 ### スキルが行うこと
 
-1. Pandoc がインストール済みか確認（未インストールならインストール方法を提案）
-2. 出力形式（docx / pdf）とテンプレートの有無を確認（DECISION-GATE）
-3. Markdown の要素（見出し・表・コードブロック）を事前に確認
-4. Pandoc コマンドを実行
-5. 変換後にレビューチェックリストを確認
+0. ツールの存在確認（pandoc / weasyprint / wkhtmltopdf）
+   - Pandoc 未インストールの場合はユーザー確認後にインストール
+   - PDF エンジン（weasyprint / wkhtmltopdf）がなければ docx への代替を提案
+1. 出力形式（docx / pdf）とテンプレートの有無を確認（DECISION-GATE）
+2. Markdown の要素（見出し・表・コードブロック）を事前に確認
+3. Pandoc コマンドを実行
+4. 変換後にレビューチェックリストを確認（HARD-GATE）
    - 見出しスタイルの適用状況
    - 表の描画確認
    - コードブロックの可読性確認
-6. 結果をユーザーに報告
+5. 結果をユーザーに報告
 
 ## 実習: 01-quality-improvement-plan.md を Word に変換する
 
@@ -110,7 +112,7 @@ pandoc 01-quality-improvement-plan.md -o quality-improvement-plan.docx
 
 ```bash
 # Pandoc のデフォルトテンプレートを取得
-pandoc --print-default-data-file reference.docx > company-template.docx
+pandoc -o company-template.docx --print-default-data-file reference.docx
 ```
 
 `company-template.docx` を Word で開き、フォント・スタイル・ヘッダー/フッターを会社規定に合わせて編集します。以後は `--reference-doc=company-template.docx` を指定するだけで体裁が統一されます。
@@ -131,22 +133,31 @@ pandoc 01-quality-improvement-plan.md \
 | 4 | 存在しないファイル | エラーメッセージとファイルパスの確認を促す |
 | 5 | Pandoc 未インストール | インストール手順を提案する |
 
-## 変換フロー全体像（7-1 との組み合わせ）
+## 変換フロー全体像（7-2 との組み合わせ）
 
-前章（7-1）と合わせると、ドキュメントの変換フロー全体が完成します：
+前章（7-2）と合わせると、ドキュメントの変換フロー全体が完成します：
 
-```
-Word/Excel 受領仕様（正本保管）
-    │
-    ↓ office-to-markdown スキル（MarkItDown + --extract-images）
-    │
-Markdown（Git 管理・AI 処理）
-    │  ├─ 要約・比較・レビュー補助（AI エージェント）
-    │  └─ 画像ファイル（images/*.png）
-    │
-    ↓ markdown-to-office スキル（Pandoc）
-    │
-提出用 Word/PDF
+```mermaid
+flowchart TD
+    Source["📄 Word/Excel 受領仕様\n正本保管"]
+
+    Skill1["office-to-markdown スキル\nMarkItDown + --extract-images"]
+
+    MD["📝 Markdown\nGit 管理・AI 処理"]
+    Images["🖼️ 画像ファイル\nimages/*.png"]
+    AI["🤖 AI エージェント\n要約・比較・レビュー補助"]
+
+    Skill2["markdown-to-office スキル\nPandoc"]
+
+    Output["📤 提出用 Word / PDF"]
+
+    Source --> Skill1
+    Skill1 --> MD
+    Skill1 --> Images
+    Images --> MD
+    MD <--> AI
+    MD --> Skill2
+    Skill2 --> Output
 ```
 
 これは [品質改善 施策検討](01-quality-improvement-plan.md) のセクション 3.1「ツール・データフロー概要」で定義されたワークフローそのものです。

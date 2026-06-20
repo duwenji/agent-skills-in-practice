@@ -1,4 +1,4 @@
-# 7-1: Office → Markdown 変換スキル（MarkItDown）
+# 7-2: Office → Markdown 変換スキル（MarkItDown）
 
 > **学習時間**: 30分 | **難易度**: ⭐⭐
 
@@ -26,11 +26,17 @@ Word・Excel・PowerPoint・PDF などの Office ファイルを Markdown に変
 - **対応形式**: Word (.docx), Excel (.xlsx), PowerPoint (.pptx), PDF, HTML, CSV, JSON, XML, EPUB, 画像（OCR）など
 - **特徴**: 表・見出し・リストなど文書構造を保持したまま Markdown に変換する
 
-### インストール
+### 環境のセットアップ
 
 ```bash
-pip install "markitdown[docx,xlsx,pptx,pdf]"
+cd samples/document-workflow/office-to-markdown
+
+# 仮想環境を作成して開発用依存を入れる
+uv venv
+uv sync --group dev
 ```
+
+以後のコマンドはすべて `uv run python ...` 経由で実行します。方針 B（LLM ビジョン）を使う場合は、追加で `uv sync --extra mode-b` を実行します。
 
 > **注意**: `onnxruntime`（依存パッケージ）は Python 3.14 未対応です。Python 3.12 または 3.13 を使用してください。
 
@@ -49,7 +55,7 @@ markitdown 報告書.pdf -o 報告書.md
 
 ## スキルの実装
 
-`samples/document-workflow/office-to-markdown/` に完全な実装があります。
+`samples/document-workflow/office-to-markdown/` に完全な実装があります。サンプルは `uv` 管理を前提にしており、変換前に `markitdown` / `openai` / `LibreOffice` の有無を確認し、グラフ・画像の処理方針を必ず確認したうえで、変換後は `check_output.py` で検証します。
 
 ### ファイル構成
 
@@ -74,12 +80,29 @@ cd samples/document-workflow/office-to-markdown
 uv venv --python 3.12
 
 # 依存関係をインストール
-uv sync
+uv sync --group dev
 ```
 
 ### 3つの変換方針
 
 スクリプトは `--mode` オプションで3つの方針を切り替えられます。
+
+```mermaid
+flowchart LR
+    Input["Office ファイル\n.docx / .xlsx など"]
+
+    A["方針 A（デフォルト）\n--mode a\nMarkItDown のみ\n高速・シンプル"]
+    B["方針 B（LLM ビジョン）\n--mode b\nOpenAI vision で\n画像を説明文に変換"]
+    C["方針 C（ZIP 抽出）\n--mode c\ndocx ZIP / LibreOffice で\n画像を PNG として抽出"]
+
+    OutA["Markdown\n（画像はスタブ参照）"]
+    OutB["Markdown\n（画像 → alt テキスト）"]
+    OutC["Markdown\n（画像 → .png ファイル）"]
+
+    Input --> A --> OutA
+    Input --> B --> OutB
+    Input --> C --> OutC
+```
 
 | 方針 | コマンド | 特徴 |
 |------|---------|------|
@@ -218,19 +241,26 @@ result = md.convert("仕様書.docx")
 
 ## 発展: グラフを PNG として保持するパイプライン
 
-```
-Office ファイル（.docx / .xlsx）
-    │
-    ├─[1] MarkItDown（テキスト・表・見出しの変換）
-    │       ↓ 埋め込み画像スタブ（data:image/x-emf;base64...）
-    │
-    ├─[2] --extract-images（docx: ZIP 抽出 / xlsx: xl/media 抽出）
-    │       ↓ 画像ファイル（.emf / .png）
-    │
-    └─[3] ImageMagick（EMF → PNG 変換、--auto-install で自動取得可）
-            ↓
-        最終 Markdown
-        （![fig1](images/fig1.png) として実ファイル参照）
+```mermaid
+flowchart TD
+    Input["Office ファイル\n.docx / .xlsx"]
+
+    MarkItDown["[1] MarkItDown\nテキスト・表・見出しの変換"]
+    Stub["⚠️ 埋め込み画像スタブ\ndata:image/x-emf;base64..."]
+
+    Extract["[2] --extract-images\ndocx: ZIP 抽出 / xlsx: xl/media 抽出"]
+    ImageFile["画像ファイル\n.emf / .png"]
+
+    ImageMagick["[3] ImageMagick\nEMF → PNG 変換\n--auto-install で自動取得可"]
+
+    Output["最終 Markdown\n![fig1](images/fig1.png) として実ファイル参照"]
+
+    Input --> MarkItDown
+    MarkItDown --> Stub
+    Stub --> Extract
+    Extract --> ImageFile
+    ImageFile --> ImageMagick
+    ImageMagick --> Output
 ```
 
 ### 実務での割り切り方
