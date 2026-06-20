@@ -172,4 +172,4 @@ VS Code の Copilot チャット（エージェントモード）で以下のよ
 ## 次のステップ
 
 → [3-4: ui-ux-pro-max — UI/UX最適化スキル](04-ui-ux-pro-max.md) で、設計したUIの品質を監査する方法を学ぶ
-→ [3-6: 問題 × スキル解決マッピング](06-problem-skill-mapping.md) で、全スキルの関係性を整理する
+→ [3-9: 問題 × スキル解決マッピング](09-problem-skill-mapping.md) で、全スキルの関係性を整理する

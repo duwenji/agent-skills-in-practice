@@ -1,4 +1,4 @@
-# 3-6: 問題 × スキル解決マッピング
+# 3-9: 問題 × スキル解決マッピング
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 
@@ -6,20 +6,11 @@
 
 生成AIコード生成・コンテンツ生成の問題を、このチュートリアルで学ぶスキルでどのように解決するかを整理します。問題とスキルの対応関係を理解することで、適切なスキルを適切な場面で使えるようになります。
 
-## このドキュメントで扱うスキル
+## 登場スキルの参照先
 
-各スキルの概要を先に把握しておくと、マッピングの意図が理解しやすくなります。
+各スキルは前のセクションで個別に紹介しています。不明なスキルがあれば先に確認してください：
 
-| スキル | カテゴリ | 概要 | 詳細 |
-|-------|---------|------|------|
-| **grill-me** | 品質検証 | コードを「可読性・パフォーマンス・セキュリティ・保守性」の4軸でレビューする | [4-1](../04-skills-in-practice/01-grill-me.md) |
-| **triage** | 優先順位付け | GitHub Issue を解析し、優先度（P0〜P3）の判定・カテゴリ分類・対応推奨事項を自動生成する | [4-2](../04-skills-in-practice/02-triage-issue-analysis.md) |
-| **improve** | リファクタリング | コードのパフォーマンス最適化・リファクタリング・モダナイゼーションの改善提案を行う | [4-3](../04-skills-in-practice/03-improve.md) |
-| **frontend-design** | 設計支援 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする | [4-4](../04-skills-in-practice/04-frontend-design.md) |
-| **ui-ux-pro-max** | UI/UX監査 | アクセシビリティ・視認性・操作性を多角的に監査する | [4-5](../04-skills-in-practice/05-ui-ux-pro-max.md) |
-| **baoyu-diagram** | 図解生成 | アーキテクチャ図・フロー図をSVGで生成する | [4-6](../04-skills-in-practice/06-baoyu-diagram.md) |
-| **baoyu-infographic** | 視覚化 | データや概念を21レイアウト×17スタイルのインフォグラフィックで整理する | [4-7](../04-skills-in-practice/07-baoyu-infographic.md) |
-| **baoyu-comic** | コンテンツ制作 | 技術概念をコミック形式でわかりやすく伝える | [4-8](../04-skills-in-practice/08-baoyu-comic.md) |
+[3-3 frontend-design](03-frontend-design.md) / [3-4 ui-ux-pro-max](04-ui-ux-pro-max.md) / [3-5 baoyu-skills](05-baoyu-skills-architecture.md) / [3-6 grill-me](06-grill-me.md) / [3-7 triage](07-triage.md) / [3-8 improve](08-improve.md)
 
 ## 問題 × スキル解決マトリックス
 

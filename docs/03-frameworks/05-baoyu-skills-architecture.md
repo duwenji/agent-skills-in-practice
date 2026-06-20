@@ -74,73 +74,15 @@ baoyu-skills では、以下の2つのセクションは **SKILL.md に直接イ
 
 これにより、スキルフォルダごと他のプロジェクトにコピーしても、一切の外部参照なしで完全に動作します。
 
-```markdown
-<!-- SKILL.md 内に直接記述（インライン化） -->
-## User Input Tools
-
-When this skill prompts the user, follow this tool-selection rule (priority order):
-
-1. **Prefer built-in user-input tools** exposed by the current agent runtime
-2. **Fallback**: if no such tool exists, emit a numbered plain-text message
-3. **Batching**: if the tool supports multiple questions per call, combine them
-
-## Image Generation Tools
-
-When this skill needs to render an image:
-
-- **Use whatever image-generation tool or skill is available**
-- **If multiple are available**, ask the user once which to use
-- **Prompt file requirement**: write each prompt to a standalone file under `prompts/`
-```
-
 ### Progressive Disclosure（段階的開示）
 
-SKILL.md を500行以内に保つため、baoyu-skills は **Progressive Disclosure** パターンを採用しています：
-
-```
-skills/baoyu-example/
-├── SKILL.md              # メイン指示（<500行）
-├── references/
-│   ├── styles.md         # 必要に応じて読み込む
-│   ├── examples.md       # 必要に応じて読み込む
-│   └── providers/        # プロバイダー固有の詳細
-└── scripts/
-    └── main.ts
-```
-
-SKILL.md からは1階層のみの参照でリンクします：
-```markdown
-**利用可能なスタイル**: [references/styles.md](references/styles.md) を参照
-```
+SKILL.md を500行以内に保つため、baoyu-skills は **Progressive Disclosure** パターンを採用しています。詳細な定義（スタイル一覧、プロバイダー設定など）は `references/` フォルダに分割し、必要なときだけ読み込む構造です。これにより LLM のコンテキストウィンドウを節約しながら、必要な情報へアクセスできます。
 
 ### EXTEND.md プリファレンスシステム
 
-baoyu-skills のもう一つの重要な設計パターンが **EXTEND.md** によるユーザー設定管理です。各スキルは3段階の優先順位で設定ファイルを探索します：
+baoyu-skills のもう一つの重要な設計パターンが **EXTEND.md** によるユーザー設定管理です。各スキルは3段階の優先順位（プロジェクト → XDG → ユーザーホーム）で設定ファイルを探索します。初回実行時に EXTEND.md が存在しない場合、スキルはブロッキング状態となり、対話形式で設定を収集してから処理を開始します。
 
-| 優先度 | パス | スコープ |
-|--------|------|---------|
-| 1 | `.baoyu-skills/<skill-name>/EXTEND.md` | プロジェクト |
-| 2 | `${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/<skill-name>/EXTEND.md` | XDG |
-| 3 | `$HOME/.baoyu-skills/<skill-name>/EXTEND.md` | ユーザーホーム |
-
-初回実行時に EXTEND.md が存在しない場合、スキルは**ブロッキング**状態となり、ユーザーに対話形式で設定を収集してから初めて処理を開始します。
-
-```bash
-# 探索順序（最初に見つかったものを使用）
-test -f .baoyu-skills/baoyu-image-gen/EXTEND.md && echo "project"
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/baoyu-image-gen/EXTEND.md" && echo "xdg"
-test -f "$HOME/.baoyu-skills/baoyu-image-gen/EXTEND.md" && echo "user"
-```
-
-**設定例（baoyu-image-gen の場合）**:
-```yaml
-# .baoyu-skills/baoyu-image-gen/EXTEND.md
-default_provider: google
-default_quality: 2k
-default_aspect_ratio: 16:9
-default_model.google: gemini-3-pro-image
-batch_worker_cap: 10
-```
+> 実装の詳細は [Part 5-5: カスタムスキル開発](../05-content-creation/05-custom-skill-development.md) を参照してください。
 
 ### 5D スタイル体系
 
@@ -179,25 +121,6 @@ baoyu-skills は複数の AI エージェントで動作するよう設計され
 | **OpenAI Codex CLI** | `npx skills add` でインストール |
 | **Cursor** | スキルフォルダを直接配置 |
 | **Claude Desktop** | ファイルベースのスキル読み込み |
-
-### ランタイム検出パターン
-
-baoyu-skills のスクリプトは、実行時にランタイムを自動検出します：
-
-```bash
-# 各スキルのスクリプト冒頭で使用されるパターン
-if command -v bun &>/dev/null; then
-  BUN_X="bun"
-elif command -v npx &>/dev/null; then
-  BUN_X="npx -y bun"
-else
-  echo "Error: install bun: brew install oven-sh/bun/bun"
-  exit 1
-fi
-
-# 実行
-${BUN_X} skills/<name>/scripts/main.ts [options]
-```
 
 ## 画像生成バックエンドの抽象化
 
@@ -259,7 +182,7 @@ SKILL.md（定義）と scripts/main.ts（実行）を分離することで：
 
 ## 次のステップ
 
-→ [3-6: 問題 × スキル解決マッピング](06-problem-skill-mapping.md)
+→ [3-9: 問題 × スキル解決マッピング](09-problem-skill-mapping.md)
 
 ---
 
