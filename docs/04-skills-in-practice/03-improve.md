@@ -1,92 +1,65 @@
-# 4-3: improve — コード改善スキル
+# 4-3: improve — コード改善スキル（Matt Pocock）
 
 > **学習時間**: 25分 | **難易度**: ⭐⭐⭐ | **カテゴリ**: リファクタリング
 
-## 概要
+## このスキルについて
 
-**improve** は、既存のコードを分析し、パフォーマンス最適化、リファクタリング、モダナイゼーションの観点から改善提案を行うスキルです。各提案には難易度と期待効果の評価が付与され、優先順位付けが可能です。
+**improve** は Matt Pocock 氏が公開するコード改善スキルです。既存コードを分析し、パフォーマンス最適化・リファクタリング・モダナイゼーションの3観点から、難易度と期待効果の評価付きで改善提案を返します。
 
-## 学習目標
+- **出典**: [mattpocock/skills — improve](https://github.com/mattpocock/skills/blob/main/skills/productivity/improve/SKILL.md)
+- **用途**: レガシーコードのモダナイゼーション、パフォーマンスボトルネックの特定、技術負債の返済計画
 
-- Skill Creator を使ってコード改善スキルを生成できる
-- パフォーマンス最適化の提案を理解し、適用できる
-- 制約条件を考慮した改善提案を引き出せる
+---
 
-## 利用シーン
+## Phase A: SKILL.md を読む
 
-| シーン | 説明 |
-|-------|------|
-| レガシーコードのモダナイゼーション | 古いコードを最新のベストプラクティスに更新 |
-| パフォーマンスボトルネックの特定 | 処理が遅い箇所を特定し、改善案を提示 |
-| 技術負債の返済計画 | コードベース全体の改善点を洗い出し、優先順位付け |
-| コードレビューの補完 | レビューでは見つけにくいパフォーマンス問題を発見 |
+[出典の SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/productivity/improve/SKILL.md) をブラウザで開き、以下の観点で読みます。
 
-## SKILL.md 完全定義
+### 構造の解析
 
-`samples/improve/SKILL.md` に完全な定義があります。
+| 要素 | 確認すること |
+|------|------------|
+| 3つの改善観点の定義 | パフォーマンス・リファクタリング・モダナイゼーションがどう区別されているか |
+| `difficulty` × `impact` の基準 | スコアリングのロジック |
+| `quick_wins` と `long_term` の分類 | 何を基準に振り分けているか |
+| `constraints` パラメータ | どのような制約を受け取れるか |
 
-### 入力パラメータ
+### 設計上の注目ポイント
 
-| パラメータ | 型 | 必須 | デフォルト | 説明 |
-|-----------|------|------|-----------|------|
-| `code` | string | ✅ | — | 改善対象のコード |
-| `language` | string | ✅ | — | プログラミング言語 |
-| `improvement_type` | string | ❌ | "all" | 改善タイプ（performance / refactoring / modernization / all） |
-| `max_suggestions` | number | ❌ | 5 | 最大提案数 |
-| `include_code_examples` | boolean | ❌ | true | 改善後のコード例を含めるか |
-| `constraints` | string[] | ❌ | — | 制約条件 |
+**1. 「難易度×効果」マトリックスによる優先順位付け**
+改善案を列挙するだけでなく `quick_wins`（難易度低・効果高）と `long_term` に分類することで、実行計画が立てやすくなる。
 
-### 出力スキーマ
+**2. `constraints` による現実的な提案**
+IE11 対応・bundle size 制限・移行途中のライブラリ制約など、プロジェクト固有の制約を受け取ることで「理想論」ではなく「実現可能な改善」を提案する設計。
 
-```json
-{
-  "summary": {
-    "total_suggestions": 5,
-    "estimated_effort_hours": 8,
-    "overall_improvement_potential": "high"
-  },
-  "suggestions": [
-    {
-      "id": "OPT-1",
-      "type": "performance",
-      "title": "メモ化による再レンダリング最適化",
-      "difficulty": "easy",
-      "impact": "high",
-      "location": { "file": "src/components/UserList.tsx", "line": 15 },
-      "current_code": "const UserList = ({ users }) => { ... }",
-      "improved_code": "const UserList = React.memo(({ users }) => { ... })",
-      "rationale": "users が変更されていない場合の不要な再レンダリングを防止",
-      "estimated_improvement": "レンダリング回数が約60%削減"
-    }
-  ],
-  "quick_wins": ["OPT-1", "REF-2"],
-  "long_term": ["MOD-3"]
-}
+**3. `improvement_type` で観点を絞れる設計**
+全観点の分析は時間がかかるため、`refactoring` のみなど絞り込みができる。
+
+---
+
+## Phase B: インストールして動かす
+
+### セットアップ
+
+```bash
+mkdir -p .claude/skills/improve/
+# SKILL.md を GitHub から取得して配置
+# 出典: https://github.com/mattpocock/skills/blob/main/skills/productivity/improve/SKILL.md
 ```
 
-## 実践ハンズオン
+### テスト実行
 
-### ステップ1: Skill Creator でスキルを生成
-
-```
-@copilot improve スキルを作成して。
-既存コードを分析し、パフォーマンス最適化・リファクタリング・モダナイゼーションの
-改善提案を行うスキル。各提案に難易度と効果の評価を付けて。
-```
-
-### ステップ2: テスト実行
-
-以下のコードでテスト：
+以下のプロンプトで動作を確認します：
 
 ```
-@improve 
+/improve
 言語: TypeScript/React
 
 function SearchResults({ query, data }) {
   const [results, setResults] = useState([]);
   useEffect(() => {
     if (data) {
-      const filtered = data.filter(item => 
+      const filtered = data.filter(item =>
         item.name.includes(query) || item.description.includes(query)
       );
       setResults(filtered);
@@ -96,35 +69,35 @@ function SearchResults({ query, data }) {
 }
 ```
 
-### 期待される結果
+**期待される出力のポイント**:
 
-- **パフォーマンス**: `useMemo` でフィルタリング処理をメモ化、`React.memo` で `SearchCard` をラップ
-- **リファクタリング**: フィルタリングロジックをカスタムフックに分離
-- **クイックウィン**: `React.memo` の追加（難易度: easy, 効果: high）
+| 提案 | 観点 | 分類 |
+|------|------|------|
+| `useMemo` でフィルタリングをメモ化 | パフォーマンス | quick_win |
+| フィルタリングをカスタムフックに分離 | リファクタリング | long_term |
+| `React.memo` で `SearchCard` をラップ | パフォーマンス | quick_win |
 
-## 制約条件を使った高度な活用
+---
 
-実際のプロジェクトでは様々な制約があります。制約を指定することで、現実的な改善提案を得られます：
+## Phase C: 解析と実行結果の照合
 
-```
-@improve 
-言語: JavaScript
-制約条件: ["IE11対応", "bundle size < 200KB", "jQueryからの移行途中"]
+1. `quick_wins` に分類された提案は SKILL.md の難易度基準と一致しているか？
+2. `constraints: ["IE11対応"]` を追加すると、モダナイゼーション提案はどう変わるか？
+3. `improvement_type: "performance"` のみにした場合、リファクタリング提案は除外されるか？
 
-[既存コード]
-```
+---
 
-## テストケース
+## カスタマイズのヒント
 
-| # | テスト内容 | 期待結果 |
-|---|-----------|---------|
-| 1 | 空コード | エラーメッセージを返す |
-| 2 | パフォーマンス問題を含むコード | メモ化や不要レンダリングの改善提案 |
-| 3 | improvement_type=refactoring のみ | リファクタリング提案のみ |
-| 4 | 制約条件あり（IE11対応） | 制約を考慮した提案 |
-| 5 | 最適化済みのコード | 改善点なしの結果 |
+**チーム標準の規約を注入する**
+関数の最大行数・命名規則などをリファクタリング基準として SKILL.md に追記すると、コードレビューとの整合性が高まります。
+
+**grill-me との連携**
+grill-me でレビュー → improve で改善案取得 → 実装 のサイクルを組むことで、品質向上ループを自動化できます。
+
+---
 
 ## 次のステップ
 
-- [frontend-design: 設計支援スキル](04-frontend-design.md) でアーキテクチャレベルからの改善
-- [Part 5-1: パイプライン連携](../06-advanced/01-pipeline-integration.md) で grill-me → improve の連携
+→ [4-4: frontend-design — 設計支援スキル](04-frontend-design.md)
+→ [4-9: 問題 × スキル解決マッピング](09-problem-skill-mapping.md)
