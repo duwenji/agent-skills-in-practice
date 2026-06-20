@@ -2,13 +2,54 @@
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 
-## 概要
+## Copilot だけで頼むと
 
-**frontend-design** は、Anthropic が公式に提供するフロントエンド設計支援スキルです。コンポーネント分割、状態管理戦略、データフロー設計、レンダリング最適化の4つの観点から、要件に最適なアーキテクチャ設計案を提案します。
+```
+あなた: 商品検索機能を作って。キーワード入力 → リアルタイム候補 → 結果一覧。
+        React + TypeScript。
 
-このスキルは GitHub Copilot の Agent Skills（`.github/skills/` に配置する SKILL.md）として動作し、`@frontend-design` で呼び出せます。
+Copilot: わかりました。SearchComponent.tsx に実装します：
 
-## 特徴
+export const SearchComponent = () => {
+  const [query, setQuery] = useState('')
+  const [suggestions, setSuggestions] = useState([])
+  const [results, setResults] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [page, setCurrentPage] = useState(1)
+  // ...（300行へ続く）
+```
+
+動く。でも誰も触りたくないコードが完成した。
+
+## @frontend-design を加えると
+
+```
+あなた: @frontend-design
+要件: 商品検索機能。キーワード入力→候補表示→結果一覧。
+技術スタック: React + TypeScript
+
+Copilot: アーキテクチャを設計します。
+
+コンポーネント構成:
+  SearchContainer（状態管理）
+    ├── SearchForm（入力UI）
+    ├── SuggestionList（候補表示）
+    └── SearchResults（結果一覧）
+
+状態管理:
+  Zustand: searchStore（query, results, loading）
+  React Query: useSearchSuggestions / useSearchResults
+
+データフロー:
+  入力 → debounce(300ms) → API → 候補表示
+      → 確定 → searchStore → 結果表示
+```
+
+コードの前に設計図が出てくる。
+
+## frontend-design とは
+
+Anthropic 公式提供のフロントエンド設計支援スキルです。コンポーネント分割・状態管理・データフロー・レンダリング最適化の4観点から、要件に合ったアーキテクチャ設計案を提案します。
 
 | 項目 | 内容 |
 |------|------|
@@ -16,13 +57,22 @@
 | **動作環境** | GitHub Copilot（VS Code チャット / エージェントモード） |
 | **呼び出し方** | `@frontend-design` |
 | **スキル種別** | アーキテクチャ設計支援 |
-| **設計観点** | コンポーネント分割 / 状態管理 / データフロー / レンダリング最適化 |
 
-## 詳細説明
+> Copilot にプリインストール済みのため、Skill Creator で作成する必要はありません。
 
-### 4つの設計観点
+## 同じ依頼で何が変わるのか
 
-frontend-design は以下の4観点から総合的に設計を支援します：
+| 観点 | Copilot 単体 | @frontend-design あり |
+|------|-------------|----------------------|
+| **コンポーネント** | 1ファイルに全機能 | Container/Presentational に分割 |
+| **状態管理** | useState を羅列 | Zustand + React Query に最適化 |
+| **データフロー** | 暗黙的・双方向 | 単方向フローを明示 |
+| **最初の出力** | コード | 設計図 |
+| **保守性** | 触るのが怖い | 誰でも変更できる |
+
+## 4つの設計観点
+
+必要なときに参照してください。最初から全部覚える必要はありません。
 
 | 観点 | 説明 | 出力例 |
 |------|------|--------|
@@ -31,7 +81,7 @@ frontend-design は以下の4観点から総合的に設計を支援します：
 | **データフロー設計** | 単方向データフローを基本としたデータの流れの設計 | ユーザー入力 → Container → Custom Hook → API → Store → 再レンダリング |
 | **レンダリング最適化** | パフォーマンスを考慮したレンダリング戦略 | React.memo、仮想スクロール、入力デバウンス |
 
-### 入力パラメータ
+## 入力パラメータ
 
 | パラメータ | 型 | 必須 | 説明 |
 |-----------|------|------|------|
@@ -42,7 +92,7 @@ frontend-design は以下の4観点から総合的に設計を支援します：
 | `design_focus` | string | ❌ | 設計フォーカス（components / state / data-flow / rendering / all） |
 | `include_diagram` | boolean | ❌ | コンポーネント図を含めるか（デフォルト: false） |
 
-### 出力スキーマ
+## 出力スキーマ
 
 ```json
 {
@@ -92,8 +142,6 @@ frontend-design は以下の4観点から総合的に設計を支援します：
 
 ## 使い方
 
-> **注意**: frontend-design は Anthropic 公式提供のスキルです。Skill Creator で生成する必要はなく、GitHub Copilot にプリインストールされています。
-
 ### 1. 呼び出し方
 
 VS Code の Copilot チャット（エージェントモード）で以下のように入力するだけで利用できます：
@@ -110,7 +158,6 @@ VS Code の Copilot チャット（エージェントモード）で以下のよ
 
 状況に応じて設計フォーカスを変更できます：
 
-
 ```
 # 状態管理だけ知りたい場合
 @frontend-design design_focus=state
@@ -122,7 +169,6 @@ VS Code の Copilot チャット（エージェントモード）で以下のよ
 ```
 
 ## 次のステップ
-
 
 → [3-3b: ui-ux-pro-max — UI/UX最適化スキル](03-3b-ui-ux-pro-max.md) で、設計したUIの品質を監査する方法を学ぶ
 → [3-4: 問題 × スキル解決マッピング](04-problem-skill-mapping.md) で、全スキルの関係性を整理する
