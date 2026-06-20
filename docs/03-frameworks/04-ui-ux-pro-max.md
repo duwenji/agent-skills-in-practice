@@ -207,4 +207,4 @@ function Header() {
 
 
 → [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md) で、全スキルの関係性を整理する
-→ [Part 4: 実践スキル実装編](../04-skills-in-practice/05-ui-ux-pro-max.md) で、実際にスキルを作成して動かす
+→ [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md) で、全スキルの関係性を整理する
