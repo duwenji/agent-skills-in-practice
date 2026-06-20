@@ -12,14 +12,14 @@
 
 | スキル | カテゴリ | 概要 | 詳細 |
 |-------|---------|------|------|
-| **grill-me** | 品質検証 | コードを「可読性・パフォーマンス・セキュリティ・保守性」の4軸でレビューする | [4-1](../04-skills-in-practice/01-grill-me.md) |
-| **triage** | 優先順位付け | GitHub Issue を解析し、優先度（P0〜P3）の判定・カテゴリ分類・対応推奨事項を自動生成する | [4-2](../04-skills-in-practice/02-triage-issue-analysis.md) |
-| **improve** | リファクタリング | コードのパフォーマンス最適化・リファクタリング・モダナイゼーションの改善提案を行う | [4-3](../04-skills-in-practice/03-improve.md) |
-| **frontend-design** | 設計支援 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする | [4-4](../04-skills-in-practice/04-frontend-design.md) |
-| **ui-ux-pro-max** | UI/UX監査 | アクセシビリティ・視認性・操作性を多角的に監査する | [4-5](../04-skills-in-practice/05-ui-ux-pro-max.md) |
-| **baoyu-diagram** | 図解生成 | アーキテクチャ図・フロー図をSVGで生成する | [4-6](../04-skills-in-practice/06-baoyu-diagram.md) |
-| **baoyu-infographic** | 視覚化 | データや概念を21レイアウト×17スタイルのインフォグラフィックで整理する | [4-7](../04-skills-in-practice/07-baoyu-infographic.md) |
-| **baoyu-comic** | コンテンツ制作 | 技術概念をコミック形式でわかりやすく伝える | [4-8](../04-skills-in-practice/08-baoyu-comic.md) |
+| **grill-me** | 品質検証 | コードを「可読性・パフォーマンス・セキュリティ・保守性」の4軸でレビューする | [4-1](01-grill-me.md) |
+| **triage** | 優先順位付け | GitHub Issue を解析し、優先度（P0〜P3）の判定・カテゴリ分類・対応推奨事項を自動生成する | [4-2](02-triage-issue-analysis.md) |
+| **improve** | リファクタリング | コードのパフォーマンス最適化・リファクタリング・モダナイゼーションの改善提案を行う | [4-3](03-improve.md) |
+| **frontend-design** | 設計支援 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする | [4-4](04-frontend-design.md) |
+| **ui-ux-pro-max** | UI/UX監査 | アクセシビリティ・視認性・操作性を多角的に監査する | [4-5](05-ui-ux-pro-max.md) |
+| **baoyu-diagram** | 図解生成 | アーキテクチャ図・フロー図をSVGで生成する | [4-6](06-baoyu-diagram.md) |
+| **baoyu-infographic** | 視覚化 | データや概念を21レイアウト×17スタイルのインフォグラフィックで整理する | [4-7](07-baoyu-infographic.md) |
+| **baoyu-comic** | コンテンツ制作 | 技術概念をコミック形式でわかりやすく伝える | [4-8](08-baoyu-comic.md) |
 
 ## 問題 × スキル解決マトリックス
 
@@ -179,4 +179,4 @@ baoyu-comic: ストーリー形式でわかりやすく伝える
 
 Part 3 の学習が完了しました。メインコンテンツの Part 4 に進みましょう：
 
-→ [Part 4: 実践スキル実装編](../04-skills-in-practice/01-grill-me.md)
+→ [4-1: grill-me](01-grill-me.md)
