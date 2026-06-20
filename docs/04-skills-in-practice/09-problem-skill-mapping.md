@@ -111,25 +111,26 @@ baoyu-comic: ストーリー形式でわかりやすく伝える
 
 ## スキル選択フローチャート
 
-```
-タスクの種類は？
-         ↓
-  ┌──────┴──────┐
-コード品質・開発  コンテンツ生成
-  ↓                  ↓
-① grill-me でレビュー    何を作る？
-  ↓                  ↓
-問題あり？        ├─ 図解・構成図 → baoyu-diagram
-  ↓ Yes          ├─ データ視覚化 → baoyu-infographic
-  ↓              └─ ストーリー   → baoyu-comic
-問題の種類は？
-  ↓
-  ├─ 理解のずれ → triage で要件確認
-  ├─ 実行失敗   → improve で修正
-  ├─ 構造問題   → frontend-design で設計見直し
-  └─ UI/UX問題  → ui-ux-pro-max で監査
+```mermaid
+flowchart TD
+    START[タスクの種類は？]
+    START --> CODE[コード品質・開発]
+    START --> CONTENT[コンテンツ生成]
 
-問題が解決するまで繰り返す
+    CODE --> GRILL["① grill-me でレビュー"]
+    GRILL --> Q{問題あり？}
+    Q -->|No| DONE[✅ 完了]
+    Q -->|Yes| KIND[問題の種類は？]
+    KIND --> TG["理解のずれ<br>→ triage で要件確認"]
+    KIND --> IM["実行失敗<br>→ improve で修正"]
+    KIND --> FD["構造問題<br>→ frontend-design で設計見直し"]
+    KIND --> UI["UI/UX問題<br>→ ui-ux-pro-max で監査"]
+    TG & IM & FD & UI --> LOOP[問題が解決するまで繰り返す]
+
+    CONTENT --> WHAT[何を作る？]
+    WHAT --> BD["図解・構成図<br>→ baoyu-diagram"]
+    WHAT --> BI["データ視覚化<br>→ baoyu-infographic"]
+    WHAT --> BC["ストーリー<br>→ baoyu-comic"]
 ```
 
 ## 予防的活用
