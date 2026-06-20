@@ -1,4 +1,4 @@
-# 3-3b: ui-ux-pro-max — UI/UX最適化スキル（コミュニティ）
+# 3-4: ui-ux-pro-max — UI/UX最適化スキル（コミュニティ）
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 
@@ -206,5 +206,5 @@ function Header() {
 ## 次のステップ
 
 
-→ [3-4: 問題 × スキル解決マッピング](04-problem-skill-mapping.md) で、全スキルの関係性を整理する
+→ [3-6: 問題 × スキル解決マッピング](06-problem-skill-mapping.md) で、全スキルの関係性を整理する
 → [Part 4: 実践スキル実装編](../04-skills-in-practice/05-ui-ux-pro-max.md) で、実際にスキルを作成して動かす

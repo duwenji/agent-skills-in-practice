@@ -1,4 +1,4 @@
-# 3-3a: frontend-design — フロントエンド設計支援スキル（Anthropic 公式）
+# 3-3: frontend-design — フロントエンド設計支援スキル（Anthropic 公式）
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 
@@ -171,5 +171,5 @@ VS Code の Copilot チャット（エージェントモード）で以下のよ
 
 ## 次のステップ
 
-→ [3-3b: ui-ux-pro-max — UI/UX最適化スキル](03-3b-ui-ux-pro-max.md) で、設計したUIの品質を監査する方法を学ぶ
-→ [3-4: 問題 × スキル解決マッピング](04-problem-skill-mapping.md) で、全スキルの関係性を整理する
+→ [3-4: ui-ux-pro-max — UI/UX最適化スキル](04-ui-ux-pro-max.md) で、設計したUIの品質を監査する方法を学ぶ
+→ [3-6: 問題 × スキル解決マッピング](06-problem-skill-mapping.md) で、全スキルの関係性を整理する

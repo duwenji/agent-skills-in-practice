@@ -259,7 +259,7 @@ SKILL.md（定義）と scripts/main.ts（実行）を分離することで：
 
 ## 次のステップ
 
-→ [3-4: 問題 × スキル解決マッピング](04-problem-skill-mapping.md)
+→ [3-6: 問題 × スキル解決マッピング](06-problem-skill-mapping.md)
 
 ---
 
