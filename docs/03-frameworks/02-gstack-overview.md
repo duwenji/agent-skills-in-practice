@@ -131,8 +131,16 @@ Claude（リリースエンジニア役）: 全チェックリストを確認。
 
 gstack はスプリントの流れに沿って設計されています：
 
-```
-Think → Plan → Build → Review → Test → Ship → Reflect
+```mermaid
+flowchart LR
+    T["Think<br>/office-hours"]
+    P["Plan<br>/plan-eng-review 等"]
+    B["Build<br>/design-shotgun 等"]
+    R["Review<br>/review 等"]
+    TE["Test<br>/qa 等"]
+    S["Ship<br>/ship 等"]
+    RE["Reflect<br>/retro 等"]
+    T --> P --> B --> R --> TE --> S --> RE
 ```
 
 各スキルは前のスキルの出力を次のスキルが読み取る形で連携します。`/office-hours` が設計ドキュメントを書き、`/plan-ceo-review` がそれを読み、`/review` がバグを検出し、`/ship` が修正を確認します。
