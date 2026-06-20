@@ -9,13 +9,15 @@
 - **出典**: [mattpocock/skills — improve](https://github.com/mattpocock/skills/blob/main/skills/productivity/improve/SKILL.md)
 - **用途**: レガシーコードのモダナイゼーション、パフォーマンスボトルネックの特定、技術負債の返済計画
 
----
-
 ## なぜこのスキルが必要か
 
 「このコード、なんか遅い気がするけど、どこから手をつければ？」—— 問題の特定から改善案の優先順位づけまで、手作業では時間がかかります。improve は「難易度×効果」マトリックスで改善案を整理し、今すぐ着手できる `quick_wins` から長期的な改善まで、具体的な実行計画として返します。
 
----
+```mermaid
+flowchart LR
+    A["Phase A<br>SKILL.md を読む"] --> B["Phase B<br>インストール・動作確認"]
+    B --> C["Phase C<br>解析と実行結果の照合"]
+```
 
 ## Phase A: SKILL.md を読む
 
@@ -40,8 +42,6 @@ IE11 対応・bundle size 制限・移行途中のライブラリ制約など、
 
 **3. `improvement_type` で観点を絞れる設計**
 全観点の分析は時間がかかるため、`refactoring` のみなど絞り込みができる。
-
----
 
 ## Phase B: インストールして動かす
 
@@ -83,23 +83,17 @@ function SearchResults({ query, data }) {
 | フィルタリングをカスタムフックに分離 | リファクタリング | long_term |
 | `React.memo` で `SearchCard` をラップ | パフォーマンス | quick_win |
 
----
-
 ## Phase C: 解析と実行結果の照合
 
 1. `quick_wins` に分類された提案は SKILL.md の難易度基準と一致しているか？
 2. `constraints: ["IE11対応"]` を追加すると、モダナイゼーション提案はどう変わるか？
 3. `improvement_type: "performance"` のみにした場合、リファクタリング提案は除外されるか？
 
----
-
 ## この SKILL.md から学べる設計パターン
 
 1. **難易度×効果マトリックス** — 改善案を列挙するだけでなく `quick_wins`（難易度低・効果高）と `long_term` に分類することで、出力が「実行計画」になる。スキルの出力を「何ができるか」ではなく「何から始めるか」に変換する設計。
 2. **制約を入力として受け取る** — `constraints` パラメータで現実的な条件（IE11対応、bundle size制限など）を注入することで、「理想論」ではなく「実現可能な改善」を返せる。プロジェクト固有の制約に対応するパターン。
 3. **観点の絞り込み機能** — `improvement_type` で特定の観点だけを分析できる設計は、大きなスキルを部分的に使える柔軟性を生む。スキルを「全か無か」でなく「必要な部分だけ使える」設計にすることで、適用範囲が広がる。
-
----
 
 ## カスタマイズのヒント
 
@@ -108,8 +102,6 @@ function SearchResults({ query, data }) {
 
 **grill-me との連携**
 grill-me でレビュー → improve で改善案取得 → 実装 のサイクルを組むことで、品質向上ループを自動化できます。
-
----
 
 ## 次のステップ
 

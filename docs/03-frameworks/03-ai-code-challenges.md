@@ -6,8 +6,6 @@
 
 AIコード生成ツールを使い始めると、「なぜか思い通りに動かない」場面に繰り返しぶつかります。これらは偶発的なミスではなく、**構造的な3つの課題**から生じています。課題を正確に認識することで、スキルを使った解決策が見えてきます。
 
----
-
 ## 課題1: 理解のずれ（Context Misalignment）
 
 ### 何が起きるか
@@ -34,8 +32,6 @@ AI出力: useEffect + useState で独自フェッチするコンポーネント
 
 → [3-5: frontend-design — フロントエンド設計支援スキル](05-frontend-design.md)
 
----
-
 ## 課題2: 実行失敗（Execution Failure）
 
 ### 何が起きるか
@@ -59,8 +55,6 @@ AI出力: Array.prototype.at(-1) を使ったコード
 **`grill-me`** スキルは、生成コードを「可読性・パフォーマンス・セキュリティ・保守性」の4軸でレビューし、実行前に問題を検出します。AIが生成した後、人間がレビューする手間をスキルが補完します。
 
 → [4-1: grill-me — コードレビュースキル](../04-skills-in-practice/01-grill-me.md)
-
----
 
 ## 課題3: 構造の問題（Structural Degradation）
 
@@ -89,8 +83,6 @@ AI出力: Array.prototype.at(-1) を使ったコード
 → [4-3: improve — コード改善スキル](../04-skills-in-practice/03-improve.md)  
 → [3-6: ui-ux-pro-max — UI/UX最適化スキル](06-ui-ux-pro-max.md)
 
----
-
 ## 3つの課題とスキルの対応関係
 
 | 課題 | 根本原因 | 対応スキル |
@@ -101,17 +93,13 @@ AI出力: Array.prototype.at(-1) を使ったコード
 
 詳細なマッピングは → [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md) を参照してください。
 
----
-
 ## まとめ
 
 AIコード生成の課題は「AIが賢くないから」ではなく、**使い方の構造的なギャップ**から生じます。スキルはそのギャップを埋めるための「使い方の型」を提供します。
 
 3つの課題を認識した上でスキルを活用することで、AIとの協働の質が根本的に変わります。
 
----
-
 ## 次のステップ
 
-→ [3-4: 問題 × スキル解決マッピング](04-problem-skill-mapping.md)  
+→ [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md)
 → [3-5: frontend-design — フロントエンド設計支援スキル](05-frontend-design.md)

@@ -2,7 +2,7 @@
 
 > **学習時間**: 10分 | **難易度**: ⭐
 
-## この教材の目的
+## 概要
 
 このチュートリアルは、**Agent Skills オープンスタンダード**（`agentskills.io`）に基づくスキル開発を学ぶ学習教材です。**Claude Code**（Anthropic）と **GitHub Copilot**（GitHub/Microsoft）の両方で使えるスキルを、実践的に習得します。
 
@@ -18,7 +18,7 @@
 この教材は以下の4層で構成されています：
 
 ```mermaid
-graph TB
+flowchart TB
     A["**発見層**<br>Find Skills / gh skill / skill.sh<br>スキルを探し、見つけ、実行する"]
     B["**作成層**<br>Claude Code /skill-creator + 手書き SKILL.md<br>対話形式または手書きでスキルを作成する"]
     C["**概念層**<br>Superpowers / GStack / 前端大神問題<br>理論とフレームワークを理解する"]

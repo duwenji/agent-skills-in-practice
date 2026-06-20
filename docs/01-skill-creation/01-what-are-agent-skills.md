@@ -63,7 +63,7 @@ skill-creator は単なる SKILL.md 生成ツールではなく、**スキル開
 | **7. Description最適化** | トリガー精度を自動最適化 |
 | **8. パッケージング** | `.skill` ファイルとして出力 |
 
-> **補足**: skill-creator は Claude Code 専用のツールですが、**生成された SKILL.md は Agent Skills オープンスタンダードに準拠しているため、そのまま GitHub Copilot でも使用できます**。詳細は [1-2: skill-creator で最初のスキルを作る](02-skill-creator-hands-on.md) で学びます。
+> **💡 補足**: skill-creator は Claude Code 専用のツールですが、**生成された SKILL.md は Agent Skills オープンスタンダードに準拠しているため、そのまま GitHub Copilot でも使用できます**。詳細は [1-2: skill-creator で最初のスキルを作る](02-skill-creator-hands-on.md) で学びます。
 
 ### アプローチ2: 手書き SKILL.md
 

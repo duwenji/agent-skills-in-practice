@@ -205,6 +205,4 @@ function Header() {
 
 ## 次のステップ
 
-
-→ [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md) で、全スキルの関係性を整理する
-→ [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md) で、全スキルの関係性を整理する
+→ [4-9: 問題 × スキル解決マッピング](../04-skills-in-practice/09-problem-skill-mapping.md)

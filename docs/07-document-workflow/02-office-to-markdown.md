@@ -38,7 +38,7 @@ uv sync --group dev
 
 以後のコマンドはすべて `uv run python ...` 経由で実行します。方針 B（LLM ビジョン）を使う場合は、追加で `uv sync --extra mode-b` を実行します。
 
-> **注意**: `onnxruntime`（依存パッケージ）は Python 3.14 未対応です。Python 3.12 または 3.13 を使用してください。
+> **💡 注意**: `onnxruntime`（依存パッケージ）は Python 3.14 未対応です。Python 3.12 または 3.13 を使用してください。
 
 ### 基本的な使い方
 
@@ -223,7 +223,7 @@ uv run python scripts/check_output.py \
 | Excel 埋め込み画像 | ❌ 無視 | ❌ 無視 | ✅ `xl/media/` から抽出 |
 | Excel グラフ | ❌ 無視 | ❌ 無視 | ⚠️ LibreOffice 必要 |
 
-> **EMF について**: MarkItDown が docx のグラフ画像に対して出力するのは実際の base64 データではなく `data:image/x-emf;base64...)` という短縮形スタブです。`--extract-images` はこのスタブを検出し、元の docx ZIP から実ファイルを抽出してマッピングします。
+> **💡 EMF について**: MarkItDown が docx のグラフ画像に対して出力するのは実際の base64 データではなく `data:image/x-emf;base64...)` という短縮形スタブです。`--extract-images` はこのスタブを検出し、元の docx ZIP から実ファイルを抽出してマッピングします。
 
 ### LLM ビジョンで alt テキストを生成する（方針 B）
 

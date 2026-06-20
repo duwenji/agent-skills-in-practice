@@ -345,11 +345,7 @@ SKILL.md（定義）と scripts/main.ts（実行）を分離することで：
 - 複雑なロジックをスクリプトに委譲できる
 - テストが書きやすい
 
----
-
-> **参考リンク**: [JimLiu/baoyu-skills](https://github.com/JimLiu/baoyu-skills) | [CLAUDE.md](https://github.com/JimLiu/baoyu-skills/blob/main/CLAUDE.md)
-
----
+> **💡 参考リンク**: [JimLiu/baoyu-skills](https://github.com/JimLiu/baoyu-skills) | [CLAUDE.md](https://github.com/JimLiu/baoyu-skills/blob/main/CLAUDE.md)
 
 ## 次のステップ
 
