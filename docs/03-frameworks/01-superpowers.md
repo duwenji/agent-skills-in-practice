@@ -257,27 +257,21 @@ Claude: 全タスク完了しました。テストを実行して確認します
 
 Superpowers は以下の一連の流れで動作します：
 
-```
-① brainstorming
-   ユーザーのアイデアを設計に昇華する
-   ↓ 設計承認後
-② using-git-worktrees
-   独立したワークツリーを作成し、クリーンな状態を確保
-   ↓
-③ writing-plans
-   設計を 2-5 分単位のタスクに分割した実装計画を作成
-   ↓
-④ subagent-driven-development / executing-plans
-   タスクごとにサブエージェントを起動して並行実行
-   ↓
-⑤ test-driven-development
-   RED-GREEN-REFACTOR の TDD サイクルを徹底
-   ↓
-⑥ requesting-code-review
-   タスク完了ごとにコードレビューを実施
-   ↓
-⑦ finishing-a-development-branch
-   全タスク完了後、マージ/PR/破棄を判断
+```mermaid
+flowchart TD
+    S1["① brainstorming<br>ユーザーのアイデアを設計に昇華する"]
+    S2["② using-git-worktrees<br>独立したワークツリーを作成し、クリーンな状態を確保"]
+    S3["③ writing-plans<br>設計を 2-5 分単位のタスクに分割した実装計画を作成"]
+    S4["④ subagent-driven-development / executing-plans<br>タスクごとにサブエージェントを起動して並行実行"]
+    S5["⑤ test-driven-development<br>RED-GREEN-REFACTOR の TDD サイクルを徹底"]
+    S6["⑥ requesting-code-review<br>タスク完了ごとにコードレビューを実施"]
+    S7["⑦ finishing-a-development-branch<br>全タスク完了後、マージ/PR/破棄を判断"]
+    S1 -->|設計承認後| S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5
+    S5 --> S6
+    S6 --> S7
 ```
 
 ## スキル一覧（リファレンス）
@@ -341,14 +335,15 @@ Superpowers は以下の原則に基づいて設計されています：
 
 Superpowers の最大の特徴は、スキルが**状況に応じて自動的に起動する**点です。
 
-```
-「この機能を実装して」
-    ↓ 自動
-brainstorming が起動 → 設計を確認
-    ↓ 承認後
-writing-plans が起動 → タスク分割
-    ↓
-subagent-driven-development が自動実行
+```mermaid
+flowchart TD
+    U["「この機能を実装して」"]
+    B["brainstorming が起動<br>→ 設計を確認"]
+    W["writing-plans が起動<br>→ タスク分割"]
+    SD["subagent-driven-development<br>が自動実行"]
+    U -->|自動| B
+    B -->|承認後| W
+    W --> SD
 ```
 
 明示的に `/brainstorming` のようにスラッシュコマンドで呼び出すことも可能ですが、基本的にはエージェントが自律的に判断して適切なスキルを起動します。毎回指示しなくても、エージェントが段取りを踏んでくれる設計です。
