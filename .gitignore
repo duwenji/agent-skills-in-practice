@@ -2,7 +2,6 @@ tutorial
 .DS_Store
 Thumbs.db
 *.log
-ebook-output/
 .venv/
 __pycache__/
 .pytest_cache/
