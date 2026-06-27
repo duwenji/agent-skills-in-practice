@@ -1,4 +1,4 @@
-﻿# 4-4: frontend-design — フロントエンド設計支援スキル（Anthropic 公式）
+﻿# frontend-design — フロントエンド設計支援スキル（Anthropic 公式）
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 

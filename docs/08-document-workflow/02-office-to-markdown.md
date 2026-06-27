@@ -1,4 +1,4 @@
-﻿# 8-2: Office → Markdown 変換スキル（MarkItDown）
+﻿# Office → Markdown 変換スキル（MarkItDown）
 
 > **学習時間**: 30分 | **難易度**: ⭐⭐
 

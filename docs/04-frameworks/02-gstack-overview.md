@@ -1,4 +1,4 @@
-﻿# 4-2: gstack — Garry Tan の Claude Code スキルセット
+﻿# gstack — Garry Tan の Claude Code スキルセット
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 

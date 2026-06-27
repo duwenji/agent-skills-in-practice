@@ -1,4 +1,4 @@
-﻿# 8-3: Markdown → Office 変換スキル（Pandoc）
+﻿# Markdown → Office 変換スキル（Pandoc）
 
 > **学習時間**: 30分 | **難易度**: ⭐⭐
 

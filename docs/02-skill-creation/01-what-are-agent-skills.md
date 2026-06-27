@@ -1,4 +1,4 @@
-﻿# 2-1: Agent Skills とは
+﻿# Agent Skills とは
 
 > **学習時間**: 15分 | **難易度**: ⭐⭐
 

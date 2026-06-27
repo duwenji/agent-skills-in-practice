@@ -1,4 +1,4 @@
-﻿# 5-2: triage — Issue 分析スキル（Matt Pocock）
+﻿# triage — Issue 分析スキル（Matt Pocock）
 
 > **学習時間**: 25分 | **難易度**: ⭐⭐⭐ | **カテゴリ**: 優先順位付け
 
