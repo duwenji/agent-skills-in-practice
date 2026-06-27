@@ -109,14 +109,15 @@ Claude: 以下の3つのテストケースを実行します：
 with-skill と baseline（スキルなし）の両方を同時に実行します...
 ```
 
-実行が完了すると、評価ビューアがブラウザで開き、結果を確認できます：
+実行が完了すると、評価結果がセッション内に表示されます：
 
 ```
-Claude: 結果をブラウザで開きました。
-「Outputs」タブで各テストケースの出力を確認できます。
-「Benchmark」タブで定量的な比較結果を確認できます。
+Claude: テスト結果をまとめました。
+「with-skill（スキルあり）」と「baseline（スキルなし）」の出力を比較できます。
 確認が終わったら教えてください。
 ```
+
+> **注意**: ブラウザベースの評価ビューアは skill-creator のバージョンによって利用できない場合があります。最新の動作は実際に `/skill-creator` を実行して確認してください。
 
 ### ステップ6: フィードバックと反復改善
 
@@ -148,19 +149,20 @@ Claude: SKILL.md を更新しました。セキュリティ観点に
 
 skill-creator が20個のトリガーテストクエリ（発動すべきケース8-10個 + 発動すべきでないケース8-10個）を生成し、自動最適化を実行します。
 
-### ステップ8: パッケージング
+### ステップ8: スキルの確認と配布
 
-最終的に、スキルを `.skill` ファイルとしてパッケージ化できます：
-
-```
-あなた: パッケージ化して
-```
+完成したスキルを確認し、必要に応じて GitHub Copilot 用にコピーします：
 
 ```bash
-# skill-creator が以下のコマンドを実行
-python -m scripts.package_skill .claude/skills/code-review/
-# → code-review.skill が生成される
+# 生成されたスキルを確認
+cat .claude/skills/code-review/SKILL.md
+
+# GitHub Copilot 用にコピー
+mkdir -p .github/skills/code-review/
+cp .claude/skills/code-review/SKILL.md .github/skills/code-review/SKILL.md
 ```
+
+> **補足**: skill-creator のバージョンによっては `.skill` ファイルへのパッケージング機能が提供される場合があります。実際の動作は `/skill-creator` を実行して確認してください。
 
 ## skill-creator の活用範囲
 
@@ -177,7 +179,7 @@ python -m scripts.package_skill .claude/skills/code-review/
 |------------|------|------|
 | skill-creator が反応しない | Claude Code のバージョンが古い | `claude --version` で確認、最新にアップデート |
 | テストケースが多すぎる | 最初から多くのケースを指定 | 2-3個から始めて、後で追加 |
-| 評価ビューアが開かない | ブラウザがない環境 | `--static` フラグでHTMLファイル出力を依頼 |
+| 評価結果が見づらい | 出力が長い | 「比較表形式でまとめて」とセッション内で依頼 |
 | スキルが複雑すぎる | 一度に多くの機能を要求 | シンプルに作ってから段階的に拡張 |
 
 ### ステップ9: 生成したスキルを GitHub Copilot でも使う

@@ -93,4 +93,4 @@ git submodule add https://github.com/username/skills-repo.git .github/skills/
 
 ## 次のステップ
 
-→ [2-2: skill.sh によるCLI検索](02-skill-sh-cli.md)
+→ [2-2: gh コマンドによるスキル検索](02-skill-sh-cli.md)

@@ -157,7 +157,7 @@ my-skill/
 
 | 種類 | Claude Code | GitHub Copilot | 適用範囲 |
 |------|-------------|----------------|---------|
-| 個人用 | `~/.claude/skills/<name>/SKILL.md` | `~/.copilot/skills/<name>/SKILL.md` | 全プロジェクト |
+| 個人用 | `~/.claude/skills/<name>/SKILL.md` | `~/.copilot/skills/<name>/SKILL.md`（要確認）| 全プロジェクト |
 | プロジェクト用 | `.claude/skills/<name>/SKILL.md` | `.github/skills/<name>/SKILL.md` | そのプロジェクトのみ |
 | プラグイン | `<plugin>/skills/<name>/SKILL.md` | なし | プラグイン有効時 |
 

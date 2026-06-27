@@ -1,101 +1,123 @@
-# 2-2: skill.sh によるCLI検索
+# 2-2: gh コマンドによるスキル検索
 
-> **学習時間**: 15分 | **難易度**: ⭐⭐
+> **学習時間**: 10分 | **難易度**: ⭐⭐
 
 ## 概要
 
-**skill.sh** は、コマンドラインからスキルを検索・実行するためのツールです。GitHub CLI（gh）と連携して動作し、ターミナルから直接スキルを操作できます。
+GitHub CLI（`gh`）を使って、GitHub 上で公開されているスキルを検索・取得する方法を学びます。`gh` は GitHub が公式に提供する CLI ツールで、リポジトリ検索からファイル取得まで一貫して対応できます。
+
+> **旧情報について**: 以前このセクションで紹介していた `skill.sh` や `gh skill` コマンドは存在が確認できないため、実際に動作する `gh` コマンドに差し替えています。
 
 ## 前提条件
 
-- GitHub CLI（gh）がインストールされている
-- `gh` で GitHub アカウントにログイン済み
+- GitHub CLI（gh v2.40 以上）がインストールされている
+- `gh auth login` でログイン済み
 - Copilot サブスクリプションが有効
 
-## インストール
+## インストール確認
 
 ```bash
-# GitHub CLI のインストール確認
+# バージョン確認（v2.40 以上を推奨）
 gh --version
 
-# skill.sh のダウンロード
-curl -O https://raw.githubusercontent.com/github-copilot/skill.sh/main/skill.sh
-chmod +x skill.sh
+# 未インストール・古いバージョンの場合
+# macOS
+brew install gh
+
+# Windows
+winget install GitHub.cli
+
+# Ubuntu / Debian
+sudo apt install gh
+
+# ログイン
+gh auth login
 ```
 
-## 基本的な使い方
+## スキルの検索
 
-### スキルの検索
+### トピック検索でスキルを探す
 
 ```bash
-# キーワードで検索
-./skill.sh search code-review
+# "agent-skills" トピックで公開スキルを検索
+gh search repos --topic agent-skills --limit 20
 
-# タグでフィルタリング
-./skill.sh search --tag frontend
+# "copilot-skills" トピックでも検索
+gh search repos --topic copilot-skills --limit 20
 
-# 詳細表示
-./skill.sh search --verbose accessibility
+# キーワードを絞り込む
+gh search repos --topic agent-skills frontend --limit 10
 ```
 
-### スキルの実行
+### 著名なスキルリポジトリを確認する
 
 ```bash
-# スキルを直接実行
-./skill.sh run code-review --input "コードをここに"
+# Anthropic 公式スキル（skill-creator, grill-me など）
+gh repo view anthropics/skills
 
-# パラメータを指定して実行
-./skill.sh run code-review \
-  --param code="function add(a,b) { return a+b; }" \
-  --param language="javascript"
+# コミュニティスキル集
+gh repo view github/awesome-copilot --readme
 ```
 
-### スキル情報の表示
+## スキルの取得
+
+### 方法1: リポジトリをクローンして必要スキルをコピー
 
 ```bash
-# スキルの詳細情報を表示
-./skill.sh info code-review
+# 公式リポジトリをクローン
+gh repo clone anthropics/skills /tmp/anthropic-skills
 
-# スキルのパラメータ一覧
-./skill.sh params code-review
+# 必要なスキルを Claude Code 用にコピー
+mkdir -p .claude/skills/grill-me/
+cp /tmp/anthropic-skills/skills/grill-me/SKILL.md .claude/skills/grill-me/SKILL.md
+
+# GitHub Copilot 用にもコピー
+mkdir -p .github/skills/grill-me/
+cp .claude/skills/grill-me/SKILL.md .github/skills/grill-me/SKILL.md
+```
+
+### 方法2: GitHub API 経由で直接取得（Linux / macOS）
+
+```bash
+# gh api でファイルの内容を取得し、base64 デコードして保存
+mkdir -p .claude/skills/grill-me/
+gh api repos/anthropics/skills/contents/skills/grill-me/SKILL.md \
+  --jq '.content' | base64 -d > .claude/skills/grill-me/SKILL.md
+```
+
+### 方法3: curl で直接ダウンロード
+
+```bash
+mkdir -p .claude/skills/grill-me/
+curl -o .claude/skills/grill-me/SKILL.md \
+  https://raw.githubusercontent.com/anthropics/skills/main/skills/grill-me/SKILL.md
+```
+
+> **パス確認**: `raw.githubusercontent.com` の URL はリポジトリのディレクトリ構造に依存します。取得前にブラウザまたは `gh repo view` でパスを確認してください。
+
+## 一括取得の実践例
+
+```bash
+# 複数スキルをまとめてインストール
+gh repo clone anthropics/skills /tmp/anthropic-skills
+
+for skill in grill-me triage improve; do
+  mkdir -p ".claude/skills/$skill"
+  cp "/tmp/anthropic-skills/skills/$skill/SKILL.md" ".claude/skills/$skill/SKILL.md" \
+    && echo "✅ $skill インストール完了" \
+    || echo "❌ $skill が見つかりません（パスを確認）"
+done
 ```
 
 ## 主なコマンド一覧
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
-| `search` | スキルを検索 | `skill.sh search code-review` |
-| `run` | スキルを実行 | `skill.sh run <スキル名>` |
-| `info` | スキル詳細を表示 | `skill.sh info <スキル名>` |
-| `params` | パラメータ一覧 | `skill.sh params <スキル名>` |
-| `list` | 利用可能なスキル一覧 | `skill.sh list` |
-| `install` | スキルをインストール | `skill.sh install <URL>` |
-
-## 実践例
-
-### コードレビューの自動化
-
-```bash
-# 変更されたファイルをレビュー
-git diff --name-only HEAD~1 | while read file; do
-  ./skill.sh run code-review \
-    --param code="$(cat $file)" \
-    --param language="typescript"
-done
-```
-
-### Issue の一括トリアージ
-
-```bash
-# 未トリアージの Issue を一括処理
-gh issue list --label "needs-triage" --json number,title,body \
-  | jq -c '.[]' \
-  | while read issue; do
-    ./skill.sh run triage \
-      --param issue_title="$(echo $issue | jq -r '.title')" \
-      --param issue_body="$(echo $issue | jq -r '.body')"
-  done
-```
+| `gh search repos` | リポジトリをキーワード/トピックで検索 | `gh search repos --topic agent-skills` |
+| `gh repo view` | リポジトリの詳細・README を表示 | `gh repo view anthropics/skills` |
+| `gh repo clone` | リポジトリをクローン | `gh repo clone anthropics/skills` |
+| `gh api` | GitHub API 経由でファイルを取得 | `gh api repos/owner/repo/contents/path` |
+| `gh auth login` | GitHub アカウントにログイン | `gh auth login` |
 
 ## トラブルシューティング
 
@@ -103,8 +125,9 @@ gh issue list --label "needs-triage" --json number,title,body \
 |------|------|--------|
 | `gh` が見つからない | GitHub CLI 未インストール | `winget install GitHub.cli` または `brew install gh` |
 | 認証エラー | ログインしていない | `gh auth login` を実行 |
-| スキルが見つからない | スキル名が間違っている | `skill.sh search` で正しい名前を確認 |
-| 実行権限エラー | パーミッション不足 | `chmod +x skill.sh` を実行 |
+| 検索結果が少ない | トピック未設定のリポジトリが多い | `--topic` なしのキーワード検索も試す |
+| `base64 -d` が使えない | Windows 環境 | 方法1（クローン）または方法3（curl）を使う |
+| コピー先パスが違う | リポジトリ構造が変わった | `gh repo view` でディレクトリ構造を確認 |
 
 ## 次のステップ
 
