@@ -1,5 +1,9 @@
 title: Agent Skills in Practice
+titlePronunciation: エージェントスキルズインプラクティス
+romanizedTitle: Agent Skills in Practice
 subtitle: スキルを作り、見つけ、活用する — Claude Code と GitHub Copilot で始める実践ガイド
+subtitlePronunciation: スキルヲツクリ、ミツケ、カツヨウスル — クロードコード ト ギットハブコパイロット デハジメル ジッセンガイド
+romanizedSubtitle: "Sukiru wo Tsukuri, Mitsuke, Katsuyō suru — Claude Code to GitHub Copilot de Hajimeru Jissen Gaido"
 description: >
   Agent Skills オープンスタンダードに基づき、Claude Code と GitHub Copilot の両方でスキルを開発・活用する実践ガイド。
   スキル作成から発見・共有、実践実装、コンテンツ生成まで体系的に学べます。
@@ -11,8 +15,8 @@ keywords:
   - スキル開発
   - 開発効率化
 categories:
-  - Computers / Software Development
-  - Computers / Programming
+  - "Computers & Technology > Programming > Software Design, Testing & Engineering"
+  - "Computers & Technology > Artificial Intelligence & Machine Learning"
 listPrice: "1490 JPY"
 royaltyPlan: "70%"
 territories: Worldwide

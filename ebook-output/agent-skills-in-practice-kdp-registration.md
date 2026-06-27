@@ -1,6 +1,6 @@
 # KDP Registration Package: Agent Skills in Practice
 
-- Generated: 2026-06-27 15:42:02
+- Generated: 2026-06-27 17:03:26
 - Project: agent-skills-in-practice
 - Metadata: C:\Dev\tutorials\agent-skills-in-practice\.\.github\skills-config\ebook-build\agent-skills-in-practice.metadata.yaml
 - KDP Metadata: C:\Dev\tutorials\agent-skills-in-practice\.\.github\skills-config\ebook-build\agent-skills-in-practice.kdp.yaml
@@ -10,7 +10,11 @@
 | Field | Value |
 |---|---|
 | Title | Agent Skills in Practice |
+| Title Pronunciation | エージェントスキルズインプラクティス |
+| Romanized Title | Agent Skills in Practice |
 | Subtitle | スキルを作り、見つけ、活用する — Claude Code と GitHub Copilot で始める実践ガイド |
+| Subtitle Pronunciation | スキルヲツクリ、ミツケ、カツヨウスル — クロードコード ト ギットハブコパイロット デハジメル ジッセンガイド |
+| Romanized Subtitle | Sukiru wo Tsukuri, Mitsuke, Katsuyō suru — Claude Code to GitHub Copilot de Hajimeru Jissen Gaido |
 | Author | 杜 文吉 |
 | Language | ja-JP |
 | Publisher | Duwenji Lab |
@@ -34,8 +38,8 @@
 
 ## 4. Categories (up to 3)
 
-- Computers / Software Development
-- Computers / Programming
+- Computers & Technology > Programming > Software Design, Testing & Engineering
+- Computers & Technology > Artificial Intelligence & Machine Learning
 
 ## 5. Pricing and Distribution
 
