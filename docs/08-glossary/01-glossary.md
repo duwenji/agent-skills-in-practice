@@ -169,7 +169,7 @@
 | 反復改善サイクル | 概念 | スキル作成→テスト実行→結果確認→改善のループ。3〜5回の繰り返しを想定する | docs/01-skill-creation/04-best-practices.md |
 | 仮想チーム | 概念 | gstack が実現するAIによる役割分担体制。1人のAIに全役割を任せず、役割ごとに専門スキルを割り当てる | docs/03-frameworks/02-gstack-overview.md |
 | スプリント | 概念 | gstack が想定する開発サイクル：Think→Plan→Build→Review→Test→Ship→Reflect | docs/03-frameworks/02-gstack-overview.md |
-| 前端大神問題 | 概念 | フロントエンドAIコード生成における3つの代表的な課題。概念層のスタート地点として参照される | docs/00-fundamentals/01-ecosystem-overview.md |
+| フロントエンド開発の3つの課題 | 概念 | フロントエンドAIコード生成でよく起こる3つの課題（理解のずれ・実行失敗・構造の問題）を指す。概念層の出発点として参照される | docs/00-fundamentals/01-ecosystem-overview.md |
 | 4層構造 | 概念 | 本教材の構成：発見層・作成層・概念層・実践層 | docs/00-fundamentals/01-ecosystem-overview.md |
 | 発見層 | 概念 | Find Skills / gh skill / skill.sh でスキルを探し・見つけ・実行する層 | docs/00-fundamentals/01-ecosystem-overview.md |
 | 作成層 | 概念 | Claude Code `/skill-creator` または手書き SKILL.md でスキルを作成する層 | docs/00-fundamentals/01-ecosystem-overview.md |
