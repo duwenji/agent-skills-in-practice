@@ -68,11 +68,11 @@
 | grill-me | スキル名 | コードを「可読性・パフォーマンス・セキュリティ・保守性」の4軸でレビューする | docs/04-skills-in-practice/01-grill-me.md |
 | triage | スキル名 | GitHub Issue を解析し、優先度（P0〜P3）の判定・カテゴリ分類・対応推奨事項を自動生成する | docs/04-skills-in-practice/02-triage-issue-analysis.md |
 | improve | スキル名 | コードのパフォーマンス最適化・リファクタリング・モダナイゼーションの改善提案を行う | docs/04-skills-in-practice/03-improve.md |
-| frontend-design | スキル名 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする設計支援スキル | docs/04-skills-in-practice/04-frontend-design.md |
-| ui-ux-pro-max | スキル名 | アクセシビリティ・視認性・操作性を多角的に監査する UI/UX 改善スキル | docs/04-skills-in-practice/05-ui-ux-pro-max.md |
-| baoyu-diagram | スキル名 | アーキテクチャ図・フロー図をSVGで生成する図解スキル（JimLiu/baoyu-skills） | docs/04-skills-in-practice/06-baoyu-diagram.md |
-| baoyu-infographic | スキル名 | データや概念を 21レイアウト×17スタイル のインフォグラフィックで整理するスキル | docs/04-skills-in-practice/07-baoyu-infographic.md |
-| baoyu-comic | スキル名 | 技術概念をコミック形式でわかりやすく伝えるコンテンツ制作スキル | docs/04-skills-in-practice/08-baoyu-comic.md |
+| frontend-design | スキル名 | フロントエンドのコンポーネント分割・状態管理・データフローをガイドする設計支援スキル | docs/03-frameworks/05-frontend-design.md |
+| ui-ux-pro-max | スキル名 | アクセシビリティ・視認性・操作性を多角的に監査する UI/UX 改善スキル | docs/03-frameworks/06-ui-ux-pro-max.md |
+| baoyu-diagram | スキル名 | アーキテクチャ図・フロー図をSVGで生成する図解スキル（JimLiu/baoyu-skills） | docs/04-skills-in-practice/04-baoyu-diagram.md |
+| baoyu-infographic | スキル名 | データや概念を 21レイアウト×17スタイル のインフォグラフィックで整理するスキル | docs/04-skills-in-practice/05-baoyu-infographic.md |
+| baoyu-comic | スキル名 | 技術概念をコミック形式でわかりやすく伝えるコンテンツ制作スキル | docs/04-skills-in-practice/06-baoyu-comic.md |
 
 ---
 
@@ -202,8 +202,8 @@
 | YAML | 技術規格 | SKILL.md フロントマターに使用するデータ記述言語 | docs/01-skill-creation/01-what-are-agent-skills.md |
 | Markdown | 技術規格 | SKILL.md 本文に使用するテキストマークアップ言語 | docs/01-skill-creation/01-what-are-agent-skills.md |
 | JSON | 技術規格 | スキル出力フォーマットや設定ファイルに使用するデータ交換形式 | docs/01-skill-creation/02-skill-creator-hands-on.md |
-| SVG | 技術規格 | baoyu-diagram が生成するスケーラブルベクターグラフィクス形式。コード生成で図を作るアプローチに使用 | docs/04-skills-in-practice/06-baoyu-diagram.md |
-| WCAG | 技術規格 | Web Content Accessibility Guidelines。ui-ux-pro-max スキルのアクセシビリティチェック基準 | docs/04-skills-in-practice/09-problem-skill-mapping.md |
+| SVG | 技術規格 | baoyu-diagram が生成するスケーラブルベクターグラフィクス形式。コード生成で図を作るアプローチに使用 | docs/04-skills-in-practice/04-baoyu-diagram.md |
+| WCAG | 技術規格 | Web Content Accessibility Guidelines。ui-ux-pro-max スキルのアクセシビリティチェック基準 | docs/04-skills-in-practice/07-problem-skill-mapping.md |
 | P0〜P3 | 技術規格 | triage スキルの優先度分類。P0：即時対応 / P1：高優先 / P2：通常 / P3：低優先 | docs/04-skills-in-practice/02-triage-issue-analysis.md |
 | Git submodule | 技術規格 | スキルリポジトリを別リポジトリのサブモジュールとして追加する Git の機能 | docs/02-discovery/01-find-skills.md |
 | SLA（Service Level Agreement） | 技術規格 | サービスレベル合意書。応答時間・可用性などのサービス品質基準を定めた契約または内部規定 | docs/04-skills-in-practice/02-triage-issue-analysis.md |

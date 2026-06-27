@@ -1,4 +1,4 @@
-# 4-7: baoyu-infographic — インフォグラフィック生成スキル
+# 4-5: baoyu-infographic — インフォグラフィック生成スキル
 
 > **学習時間**: 25分 | **難易度**: ⭐⭐⭐ | **カテゴリ**: コンテンツ生成
 
@@ -172,6 +172,6 @@ prompts/
 
 ## 次のステップ
 
-→ [4-8: baoyu-comic — 知識マンガ生成スキル](08-baoyu-comic.md)
+→ [4-6: baoyu-comic — 知識マンガ生成スキル](06-baoyu-comic.md)
 
 > **💡 参考リンク**: [baoyu-infographic](https://github.com/JimLiu/baoyu-skills/tree/main/skills/baoyu-infographic)

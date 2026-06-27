@@ -22,20 +22,18 @@
 ## Part 3: 概念フレームワークと課題認識（80分）
 - `docs/03-frameworks/01-superpowers.md` — Superpowers: コーディングエージェントの開発方法論
 - `docs/03-frameworks/02-gstack-overview.md` — gstack: Garry Tan の Claude Code スキルセット
-- `docs/03-frameworks/03-3a-frontend-design.md` — frontend-design（Anthropic公式）
-- `docs/03-frameworks/03-3b-ui-ux-pro-max.md` — ui-ux-pro-max（コミュニティ）
-- `docs/03-frameworks/04-problem-skill-mapping.md` — 問題 × スキル解決マッピング
-- `docs/03-frameworks/05-baoyu-skills-architecture.md` — baoyu-skills のアーキテクチャ分析
+- `docs/03-frameworks/03-ai-code-challenges.md` — AIコード生成の3つの課題
+- `docs/03-frameworks/05-frontend-design.md` — frontend-design（Anthropic公式）
+- `docs/03-frameworks/06-ui-ux-pro-max.md` — ui-ux-pro-max（コミュニティ）
 
 ## Part 4: 実践スキル実装編（180分）⭐
 - `docs/04-skills-in-practice/01-grill-me.md` — grill-me（コードレビュー）
 - `docs/04-skills-in-practice/02-triage-issue-analysis.md` — triage（Issue分析）
 - `docs/04-skills-in-practice/03-improve.md` — improve（コード改善）
-- `docs/04-skills-in-practice/04-frontend-design.md` — frontend-design（設計支援）
-- `docs/04-skills-in-practice/05-ui-ux-pro-max.md` — ui-ux-pro-max（UI/UX最適化）
-- `docs/04-skills-in-practice/06-baoyu-diagram.md` — baoyu-diagram（SVG図形生成）
-- `docs/04-skills-in-practice/07-baoyu-infographic.md` — baoyu-infographic（インフォグラフィック）
-- `docs/04-skills-in-practice/08-baoyu-comic.md` — baoyu-comic（知識マンガ生成）
+- `docs/04-skills-in-practice/04-baoyu-diagram.md` — baoyu-diagram（SVG図形生成）
+- `docs/04-skills-in-practice/05-baoyu-infographic.md` — baoyu-infographic（インフォグラフィック）
+- `docs/04-skills-in-practice/06-baoyu-comic.md` — baoyu-comic（知識マンガ生成）
+- `docs/04-skills-in-practice/07-problem-skill-mapping.md` — 問題 × スキル解決マッピング
 
 ## Part 5: コンテンツ生成スキル実践（90分）🆕
 - `docs/05-content-creation/01-baoyu-ecosystem.md` — baoyu-skills エコシステム入門
@@ -49,6 +47,11 @@
 - `docs/06-advanced/02-ci-cd-integration.md` — 実プロジェクトへの組み込み
 - `docs/06-advanced/03-evaluation-cycle.md` — スキル評価と改善サイクル
 - `docs/06-advanced/04-skill-creator-deep-dive.md` — skill-creator 徹底解説（対話生成の仕組みと活用ノウハウ）
+
+## Part 7: ドキュメントワークフロー自動化（60分）
+- `docs/07-document-workflow/01-quality-improvement-plan.md` — サンプル文書（品質改善 施策検討）
+- `docs/07-document-workflow/02-office-to-markdown.md` — Office → Markdown 変換スキル（MarkItDown）
+- `docs/07-document-workflow/03-markdown-to-office.md` — Markdown → Office 変換スキル（Pandoc）
 
 ## Part 8: 用語集
 
