@@ -1,4 +1,4 @@
-title: Agent Skills in Practice
+﻿title: Agent Skills in Practice
 subtitle: スキルを作り、見つけ、活用する — Claude Code と GitHub Copilot で始める実践ガイド
 creator: 杜 文吉
 language: ja-JP
@@ -24,10 +24,10 @@ subject:
   - artificial intelligence
 chapters:
   dir-titles:
-    00-fundamentals: 概要と環境準備
-    01-skill-creation: スキル作成入門
-    02-discovery: スキル発見と共有
-    03-frameworks: 概念フレームワークと課題認識
-    04-skills-in-practice: 実践スキル実装編
-    05-content-creation: コンテンツ生成スキル実践
-    06-advanced: 発展・応用
+    01-fundamentals: 概要と環境準備
+    02-skill-creation: スキル作成入門
+    03-discovery: スキル発見と共有
+    04-frameworks: 概念フレームワークと課題認識
+    05-skills-in-practice: 実践スキル実装編
+    06-content-creation: コンテンツ生成スキル実践
+    07-advanced: 発展・応用

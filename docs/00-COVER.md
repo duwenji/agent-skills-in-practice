@@ -1,4 +1,4 @@
-# Agent Skills in Practice
+﻿# Agent Skills in Practice
 
 ![version](https://img.shields.io/badge/version-0.2.0-blue)
 ![lang](https://img.shields.io/badge/lang-ja-green)
@@ -23,14 +23,14 @@ Standard    : agentskills.io
 
 | Part | タイトル | 学習時間 |
 |------|---------|---------|
-| Part 0 | 概要と環境準備 | 20分 |
-| Part 1 | スキル作成入門 | 60分 |
-| Part 2 | スキル発見と共有 | 60分 |
-| Part 3 | フレームワーク：Superpowers と設計スキル | 40分 |
-| Part 4 | 実践スキル実装編 | 180分 |
-| Part 5 | コンテンツ生成スキル実践 | 90分 |
-| Part 6 | 発展・応用 | 65分 |
-| Part 7 | ドキュメントワークフロー自動化 | 60分 |
+| Part 1 | 概要と環境準備 | 20分 |
+| Part 2 | スキル作成入門 | 60分 |
+| Part 3 | スキル発見と共有 | 60分 |
+| Part 4 | フレームワーク：Superpowers と設計スキル | 40分 |
+| Part 5 | 実践スキル実装編 | 180分 |
+| Part 6 | コンテンツ生成スキル実践 | 90分 |
+| Part 7 | 発展・応用 | 65分 |
+| Part 8 | ドキュメントワークフロー自動化 | 60分 |
 | **合計** | | **9時間** |
 
 ---
