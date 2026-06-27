@@ -1,6 +1,6 @@
 # KDP Registration Package: Agent Skills in Practice
 
-- Generated: 2026-06-15 21:01:36
+- Generated: 2026-06-27 09:58:23
 - Project: agent-skills-in-practice
 - Metadata: C:\Dev\tutorials\agent-skills-in-practice\.\.github\skills-config\ebook-build\agent-skills-in-practice.metadata.yaml
 - KDP Metadata: C:\Dev\tutorials\agent-skills-in-practice\.\.github\skills-config\ebook-build\agent-skills-in-practice.kdp.yaml
