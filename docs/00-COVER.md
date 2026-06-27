@@ -1,15 +1,21 @@
 # Agent Skills in Practice
 
-## スキルを作り、見つけ、活用する — Claude Code と GitHub Copilot で始める実践ガイド
+![version](https://img.shields.io/badge/version-0.2.0-blue)
+![lang](https://img.shields.io/badge/lang-ja-green)
+![author](https://img.shields.io/badge/author-Duwenji_Lab-lightgrey)
+![updated](https://img.shields.io/badge/updated-2026--06-orange)
+
+> スキルを作り、見つけ、活用する — Claude Code と GitHub Copilot で始める実践ガイド
 
 この教材は、Agent Skills オープンスタンダード（`agentskills.io`）に基づき、Claude Code の `/skill-creator` と GitHub Copilot Agent Skills の両方でスキルを開発・活用する方法を学べる実践ガイドです。
 
----
-
-**著者**: 杜 文吉  
-**出版**: Duwenji Lab  
-**バージョン**: 0.2.0  
-**最終更新**: 2026年6月
+```
+Author      : 杜 文吉
+Organization: Duwenji Lab
+Version     : 0.2.0
+Updated     : 2026-06
+Standard    : agentskills.io
+```
 
 ---
 
@@ -29,4 +35,4 @@
 
 ---
 
-> 💡 本書は実践チュートリアルです。各 Part を順番に進めることで、スキル開発の基礎から応用まで体系的に学べます。
+> **Note:** 本書は実践チュートリアルです。各 Part を順番に進めることで、スキル開発の基礎から応用まで体系的に学べます。

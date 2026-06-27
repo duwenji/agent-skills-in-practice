@@ -106,7 +106,7 @@ console.log("=== Pipeline Complete ===");
 
 このパイプライン自体を1つのスキルとして定義することもできます：
 
-```yaml
+````markdown
 # SKILL.md
 ---
 name: blog-pipeline
@@ -128,7 +128,8 @@ tags: [pipeline, content, blog]
 3. baoyu-infographic でインフォグラフィックを生成
 4. baoyu-slide-deck でスライドを生成
 5. 全ての出力を `output/` ディレクトリに保存
-```
+
+````
 
 ## 応用パターン
 
@@ -150,19 +151,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+    
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
-      
+    
       - name: Install baoyu-skills
         run: npx skills add jimliu/baoyu-skills
-      
+    
       - name: Generate cover images
         run: |
           for article in articles/*.md; do
             /baoyu-cover-image "$article" --quick
           done
-      
+    
       - name: Commit generated assets
         run: |
           git add images/
