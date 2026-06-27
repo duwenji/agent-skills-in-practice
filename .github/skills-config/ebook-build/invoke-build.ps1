@@ -11,7 +11,9 @@ param(
     [string]$ConfigFile = '.github/skills-config/ebook-build/agent-skills-in-practice.build.json',
     [Parameter(Mandatory = $true)]
     [ValidateSet('step1', 'step2', 'step3')]
-    [string]$BuildStep
+    [string]$BuildStep,
+
+    [switch]$Force
 )
 
 Set-StrictMode -Version Latest
@@ -52,9 +54,17 @@ Write-Host "  -RepoRoot   $repoRoot"
 Write-Host "  -ConfigFile $configFileResolved"
 Write-Host "  -BuildStep  $BuildStep"
 
-& pwsh -NoProfile -ExecutionPolicy Bypass -File $dispatcherScript `
-    -RepoRoot   $repoRoot `
-    -ConfigFile $configFileResolved `
-    -BuildStep  $BuildStep
+if ($Force) {
+    & pwsh -NoProfile -ExecutionPolicy Bypass -File $dispatcherScript `
+        -RepoRoot   $repoRoot `
+        -ConfigFile $configFileResolved `
+        -BuildStep  $BuildStep `
+        -Force
+} else {
+    & pwsh -NoProfile -ExecutionPolicy Bypass -File $dispatcherScript `
+        -RepoRoot   $repoRoot `
+        -ConfigFile $configFileResolved `
+        -BuildStep  $BuildStep
+}
 
 exit $LASTEXITCODE
