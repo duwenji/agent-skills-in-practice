@@ -176,6 +176,10 @@
 | 概念層 | 概念 | Superpowers / GStack / 前端大神問題を通じて理論・フレームワークを理解する層 | docs/00-fundamentals/01-ecosystem-overview.md |
 | 実践層 | 概念 | grill-me / triage / improve / frontend-design / ui-ux-pro-max 等の実践スキルを使いこなす層 | docs/00-fundamentals/01-ecosystem-overview.md |
 | 応用層 | 概念 | コンテンツ生成パイプライン・画像生成バックエンド・カスタムスキル開発の層 | docs/00-fundamentals/01-ecosystem-overview.md |
+| CI（Continuous Integration） | 概念 | 継続的インテグレーション。コードをリポジトリに統合するたびに自動テスト・検証を実行する開発プラクティス | docs/04-skills-in-practice/01-grill-me.md |
+| コンテキスト注入パターン | 概念 | スキル本体は汎用ロジックとして保ち、プロジェクト固有の文脈（コンテキスト）を呼び出し側から渡す設計パターン。1つのスキルを複数プロジェクトで再利用可能にする | docs/04-skills-in-practice/02-triage-issue-analysis.md |
+| 難易度×効果マトリクス | 概念 | 改善案を「実装の難しさ」と「期待される効果」の2軸で分類する手法。improve スキルの `quick_wins` / `long_term` 分類の基礎 | docs/04-skills-in-practice/03-improve.md |
+| トークン | 概念 | AI が一度に処理する文字・単語の単位。SKILL.md の読み込みコストはトークン数で計測される。フロントマターを分離することでトークン消費を最小化できる | docs/01-skill-creation/01-what-are-agent-skills.md |
 
 ---
 
@@ -202,6 +206,8 @@
 | WCAG | 技術規格 | Web Content Accessibility Guidelines。ui-ux-pro-max スキルのアクセシビリティチェック基準 | docs/04-skills-in-practice/09-problem-skill-mapping.md |
 | P0〜P3 | 技術規格 | triage スキルの優先度分類。P0：即時対応 / P1：高優先 / P2：通常 / P3：低優先 | docs/04-skills-in-practice/02-triage-issue-analysis.md |
 | Git submodule | 技術規格 | スキルリポジトリを別リポジトリのサブモジュールとして追加する Git の機能 | docs/02-discovery/01-find-skills.md |
+| SLA（Service Level Agreement） | 技術規格 | サービスレベル合意書。応答時間・可用性などのサービス品質基準を定めた契約または内部規定 | docs/04-skills-in-practice/02-triage-issue-analysis.md |
+| Semantic Versioning | 技術規格 | `vMajor.Minor.Patch` 形式のバージョン番号規則。メジャーは破壊的変更、マイナーは後方互換の機能追加、パッチはバグ修正を意味する | docs/06-advanced/03-evaluation-cycle.md |
 
 ---
 
@@ -229,3 +235,5 @@
 | エッジケース | 評価・品質 | 境界条件・例外条件のテストケース。通常の正常系とは別に設計する | docs/06-advanced/04-skill-creator-deep-dive.md |
 | ベンチマーク | 評価・品質 | with-skill と baseline の比較評価。評価ビューアの Benchmark タブで確認できる | docs/06-advanced/04-skill-creator-deep-dive.md |
 | トリガーテストクエリ | 評価・品質 | Description 最適化で使う 20 個のテスト入力（発動すべきケース 8〜10 件＋発動すべきでないケース 8〜10 件） | docs/06-advanced/04-skill-creator-deep-dive.md |
+| 評価軸 | 評価・品質 | スキルの評価観点をグループ化した軸。grill-me では「可読性・パフォーマンス・セキュリティ・保守性」の4軸を使用 | docs/04-skills-in-practice/01-grill-me.md |
+| quick_wins | 評価・品質 | improve スキルの出力分類。難易度が低く効果が高い改善案。すぐ着手できる改善として優先的に提示される | docs/04-skills-in-practice/03-improve.md |
